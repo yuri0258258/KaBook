@@ -8,7 +8,6 @@
 import UIKit
 
 extension UINavigationBar {
-
     func navigationBarGradientBackGround(navigationBar: UINavigationBar,safeAreaTop: CGFloat,color1: CGColor = UIColor.rgb(red: 55, green: 161, blue: 246).cgColor, color2: CGColor = UIColor.rgb(red: 58, green: 236, blue: 150).cgColor){
         // CAGradientLayerの初期化
         let gradient = CAGradientLayer()

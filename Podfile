@@ -12,6 +12,9 @@ target 'KaBook' do
   pod 'Nuke'
   pod 'PKHUD'
   pod 'Charts'
+  pod 'RealmSwift'
+  pod 'FSCalendar'
+  pod 'CalculateCalendarLogic'
 
   target 'KaBookTests' do
     inherit! :search_paths

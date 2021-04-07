@@ -15,6 +15,8 @@
 		477A76D826121CE800674F6B /* NoteTop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 477A76D726121CE800674F6B /* NoteTop.storyboard */; };
 		477A76DD26121CF800674F6B /* MoneyTop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 477A76DC26121CF800674F6B /* MoneyTop.storyboard */; };
 		477A76E226121D1300674F6B /* MenuTop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 477A76E126121D1300674F6B /* MenuTop.storyboard */; };
+		47A0746D261E3AE800DA5A0D /* CalendarRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A0746C261E3AE800DA5A0D /* CalendarRealm.swift */; };
+		47A07477261E40C300DA5A0D /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A07476261E40C300DA5A0D /* Navigation.swift */; };
 		47B4DF6D260A41E200D50ABC /* UIColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DF6C260A41E200D50ABC /* UIColorExtention.swift */; };
 		47B7F0692610EA5300544B41 /* BaseTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47B7F0682610EA5300544B41 /* BaseTabBar.storyboard */; };
 		47B7F0702610EDC600544B41 /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7F06F2610EDC600544B41 /* BaseTabBarViewController.swift */; };
@@ -63,6 +65,8 @@
 		477A76D726121CE800674F6B /* NoteTop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoteTop.storyboard; sourceTree = "<group>"; };
 		477A76DC26121CF800674F6B /* MoneyTop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoneyTop.storyboard; sourceTree = "<group>"; };
 		477A76E126121D1300674F6B /* MenuTop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MenuTop.storyboard; sourceTree = "<group>"; };
+		47A0746C261E3AE800DA5A0D /* CalendarRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRealm.swift; sourceTree = "<group>"; };
+		47A07476261E40C300DA5A0D /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		47B4DF6C260A41E200D50ABC /* UIColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtention.swift; sourceTree = "<group>"; };
 		47B7F0682610EA5300544B41 /* BaseTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BaseTabBar.storyboard; sourceTree = "<group>"; };
 		47B7F06F2610EDC600544B41 /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +211,38 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		47A0746A261E3ABE00DA5A0D /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				47A0746B261E3ACC00DA5A0D /* Carendar */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		47A0746B261E3ACC00DA5A0D /* Carendar */ = {
+			isa = PBXGroup;
+			children = (
+				47A0746C261E3AE800DA5A0D /* CalendarRealm.swift */,
+			);
+			path = Carendar;
+			sourceTree = "<group>";
+		};
+		47A07474261E407900DA5A0D /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				47A07475261E409F00DA5A0D /* Nav */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		47A07475261E409F00DA5A0D /* Nav */ = {
+			isa = PBXGroup;
+			children = (
+				47A07476261E40C300DA5A0D /* Navigation.swift */,
+			);
+			path = Nav;
+			sourceTree = "<group>";
+		};
 		47B4DF6B260A41BC00D50ABC /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +367,8 @@
 		47EF6F352608F2BF00862E63 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				47A07474261E407900DA5A0D /* Utility */,
+				47A0746A261E3ABE00DA5A0D /* Realm */,
 				47B4DF6B260A41BC00D50ABC /* Extentions */,
 				47EF6F022608EEC500862E63 /* AppDelegate.swift */,
 				47EF6F042608EEC500862E63 /* SceneDelegate.swift */,
@@ -625,6 +663,8 @@
 				47EF6F072608EEC500862E63 /* HomeViewController.swift in Sources */,
 				47B4DF6D260A41E200D50ABC /* UIColorExtention.swift in Sources */,
 				476FD6D42614B9EB00DCAA21 /* NavigationExtentions.swift in Sources */,
+				47A0746D261E3AE800DA5A0D /* CalendarRealm.swift in Sources */,
+				47A07477261E40C300DA5A0D /* Navigation.swift in Sources */,
 				47C37C8E2615F2C200B6215B /* ChartListCollectionViewCell.swift in Sources */,
 				47EF6F032608EEC500862E63 /* AppDelegate.swift in Sources */,
 				47C37CB72616059A00B6215B /* UIViewExtention.swift in Sources */,
