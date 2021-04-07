@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>824050163484-7e9p8i42k5f1kde7o7meo8ma632ba3qf.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.824050163484-7e9p8i42k5f1kde7o7meo8ma632ba3qf</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDvHMked7p21J4D-poF_C9kzAnl6G_na8w</string>
+	<key>GCM_SENDER_ID</key>
+	<string>824050163484</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.nandeyanen.KaBook</string>
+	<key>PROJECT_ID</key>
+	<string>kabook-8f0a6</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kabook-8f0a6.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:824050163484:ios:d22f35474b9f7bcf5c64d9</string>
+</dict>
+</plist>

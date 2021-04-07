@@ -1,0 +1,972 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		238CBE3C70DEF56D33522DBE /* Pods_KaBookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56A5203B1534DDD23308922E /* Pods_KaBookTests.framework */; };
+		471993DE260A48E5000CDE57 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 471993DD260A48E5000CDE57 /* SignUp.storyboard */; };
+		471993E3260A4945000CDE57 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471993E2260A4945000CDE57 /* SignUpViewController.swift */; };
+		476FD6D42614B9EB00DCAA21 /* NavigationExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476FD6D32614B9EB00DCAA21 /* NavigationExtentions.swift */; };
+		477A76CE26120A7400674F6B /* UIImageExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477A76CD26120A7400674F6B /* UIImageExtention.swift */; };
+		477A76D826121CE800674F6B /* NoteTop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 477A76D726121CE800674F6B /* NoteTop.storyboard */; };
+		477A76DD26121CF800674F6B /* MoneyTop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 477A76DC26121CF800674F6B /* MoneyTop.storyboard */; };
+		477A76E226121D1300674F6B /* MenuTop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 477A76E126121D1300674F6B /* MenuTop.storyboard */; };
+		47B4DF6D260A41E200D50ABC /* UIColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DF6C260A41E200D50ABC /* UIColorExtention.swift */; };
+		47B7F0692610EA5300544B41 /* BaseTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47B7F0682610EA5300544B41 /* BaseTabBar.storyboard */; };
+		47B7F0702610EDC600544B41 /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B7F06F2610EDC600544B41 /* BaseTabBarViewController.swift */; };
+		47C37C8E2615F2C200B6215B /* ChartListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C37C8D2615F2C200B6215B /* ChartListCollectionViewCell.swift */; };
+		47C37C972615F3A300B6215B /* ChartListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47C37C962615F3A300B6215B /* ChartListCollectionViewCell.xib */; };
+		47C37CB72616059A00B6215B /* UIViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C37CB62616059A00B6215B /* UIViewExtention.swift */; };
+		47EA7D83261C64D8007536AC /* MoneyTopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EA7D82261C64D8007536AC /* MoneyTopViewController.swift */; };
+		47EF6F032608EEC500862E63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF6F022608EEC500862E63 /* AppDelegate.swift */; };
+		47EF6F052608EEC500862E63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF6F042608EEC500862E63 /* SceneDelegate.swift */; };
+		47EF6F072608EEC500862E63 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF6F062608EEC500862E63 /* HomeViewController.swift */; };
+		47EF6F0A2608EEC500862E63 /* HomeTop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47EF6F082608EEC500862E63 /* HomeTop.storyboard */; };
+		47EF6F0C2608EEC600862E63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47EF6F0B2608EEC600862E63 /* Assets.xcassets */; };
+		47EF6F0F2608EEC600862E63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47EF6F0D2608EEC600862E63 /* LaunchScreen.storyboard */; };
+		47EF6F1A2608EEC600862E63 /* KaBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF6F192608EEC600862E63 /* KaBookTests.swift */; };
+		47EF6F252608EEC600862E63 /* KaBookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF6F242608EEC600862E63 /* KaBookUITests.swift */; };
+		47EF6F422608F87100862E63 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47EF6F412608F87100862E63 /* Login.storyboard */; };
+		47EF6F472608F89B00862E63 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF6F462608F89B00862E63 /* LoginViewController.swift */; };
+		47EF6F4C2608FC3F00862E63 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47EF6F4B2608FC3F00862E63 /* GoogleService-Info.plist */; };
+		5AFFDEBBA2426F01E449407D /* Pods_KaBook_KaBookUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4496BB643B52B2D176BEA1E0 /* Pods_KaBook_KaBookUITests.framework */; };
+		D6AF60F72CBB1C94FC605C0D /* Pods_KaBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F869444ECA8D367FD22F46DE /* Pods_KaBook.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		47EF6F162608EEC600862E63 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 47EF6EF72608EEC500862E63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 47EF6EFE2608EEC500862E63;
+			remoteInfo = KaBook;
+		};
+		47EF6F212608EEC600862E63 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 47EF6EF72608EEC500862E63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 47EF6EFE2608EEC500862E63;
+			remoteInfo = KaBook;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4496BB643B52B2D176BEA1E0 /* Pods_KaBook_KaBookUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KaBook_KaBookUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		471993DD260A48E5000CDE57 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		471993E2260A4945000CDE57 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		476FD6D32614B9EB00DCAA21 /* NavigationExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationExtentions.swift; sourceTree = "<group>"; };
+		477A76CD26120A7400674F6B /* UIImageExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtention.swift; sourceTree = "<group>"; };
+		477A76D726121CE800674F6B /* NoteTop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoteTop.storyboard; sourceTree = "<group>"; };
+		477A76DC26121CF800674F6B /* MoneyTop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoneyTop.storyboard; sourceTree = "<group>"; };
+		477A76E126121D1300674F6B /* MenuTop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MenuTop.storyboard; sourceTree = "<group>"; };
+		47B4DF6C260A41E200D50ABC /* UIColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtention.swift; sourceTree = "<group>"; };
+		47B7F0682610EA5300544B41 /* BaseTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BaseTabBar.storyboard; sourceTree = "<group>"; };
+		47B7F06F2610EDC600544B41 /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
+		47C37C8D2615F2C200B6215B /* ChartListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartListCollectionViewCell.swift; sourceTree = "<group>"; };
+		47C37C962615F3A300B6215B /* ChartListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartListCollectionViewCell.xib; sourceTree = "<group>"; };
+		47C37CB62616059A00B6215B /* UIViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtention.swift; sourceTree = "<group>"; };
+		47EA7D82261C64D8007536AC /* MoneyTopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTopViewController.swift; sourceTree = "<group>"; };
+		47EF6EFF2608EEC500862E63 /* KaBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		47EF6F022608EEC500862E63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		47EF6F042608EEC500862E63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		47EF6F062608EEC500862E63 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		47EF6F092608EEC500862E63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HomeTop.storyboard; sourceTree = "<group>"; };
+		47EF6F0B2608EEC600862E63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		47EF6F0E2608EEC600862E63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		47EF6F102608EEC600862E63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47EF6F152608EEC600862E63 /* KaBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KaBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		47EF6F192608EEC600862E63 /* KaBookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaBookTests.swift; sourceTree = "<group>"; };
+		47EF6F1B2608EEC600862E63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47EF6F202608EEC600862E63 /* KaBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KaBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		47EF6F242608EEC600862E63 /* KaBookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaBookUITests.swift; sourceTree = "<group>"; };
+		47EF6F262608EEC600862E63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47EF6F412608F87100862E63 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		47EF6F462608F89B00862E63 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		47EF6F4B2608FC3F00862E63 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		56A5203B1534DDD23308922E /* Pods_KaBookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KaBookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E323EA2A0CF66F1D2FCC338 /* Pods-KaBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaBook.release.xcconfig"; path = "Target Support Files/Pods-KaBook/Pods-KaBook.release.xcconfig"; sourceTree = "<group>"; };
+		A5D5DA325B29621FEC2A5E39 /* Pods-KaBook-KaBookUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaBook-KaBookUITests.debug.xcconfig"; path = "Target Support Files/Pods-KaBook-KaBookUITests/Pods-KaBook-KaBookUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B21153FDA5EBEE36F987204D /* Pods-KaBookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaBookTests.debug.xcconfig"; path = "Target Support Files/Pods-KaBookTests/Pods-KaBookTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D1BD8099E51612146FED069D /* Pods-KaBook-KaBookUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaBook-KaBookUITests.release.xcconfig"; path = "Target Support Files/Pods-KaBook-KaBookUITests/Pods-KaBook-KaBookUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F869444ECA8D367FD22F46DE /* Pods_KaBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KaBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBEBA81D9603E31E4B311F7B /* Pods-KaBookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaBookTests.release.xcconfig"; path = "Target Support Files/Pods-KaBookTests/Pods-KaBookTests.release.xcconfig"; sourceTree = "<group>"; };
+		FE6078004CD79A234F3FEE8E /* Pods-KaBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaBook.debug.xcconfig"; path = "Target Support Files/Pods-KaBook/Pods-KaBook.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		47EF6EFC2608EEC500862E63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6AF60F72CBB1C94FC605C0D /* Pods_KaBook.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47EF6F122608EEC600862E63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				238CBE3C70DEF56D33522DBE /* Pods_KaBookTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47EF6F1D2608EEC600862E63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AFFDEBBA2426F01E449407D /* Pods_KaBook_KaBookUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		40061BA871E640E7C756846B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F869444ECA8D367FD22F46DE /* Pods_KaBook.framework */,
+				4496BB643B52B2D176BEA1E0 /* Pods_KaBook_KaBookUITests.framework */,
+				56A5203B1534DDD23308922E /* Pods_KaBookTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		476FD6C42614B20500DCAA21 /* Account  */ = {
+			isa = PBXGroup;
+			children = (
+				471993DD260A48E5000CDE57 /* SignUp.storyboard */,
+				47EF6F412608F87100862E63 /* Login.storyboard */,
+			);
+			path = "Account ";
+			sourceTree = "<group>";
+		};
+		476FD6C52614B21C00DCAA21 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				471993E2260A4945000CDE57 /* SignUpViewController.swift */,
+				47EF6F462608F89B00862E63 /* LoginViewController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		476FD6C62614B22800DCAA21 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				47C37C952615F38300B6215B /* Chart */,
+				47EF6F062608EEC500862E63 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		477A76D226121C1E00674F6B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				476FD6C42614B20500DCAA21 /* Account  */,
+				477A76D326121C9500674F6B /* Home */,
+				477A76D526121CA900674F6B /* Note */,
+				477A76D426121C9D00674F6B /* Money */,
+				477A76D626121CB100674F6B /* Menu */,
+				47B7F06D2610ED9300544B41 /* TabBar */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		477A76D326121C9500674F6B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				47EF6F082608EEC500862E63 /* HomeTop.storyboard */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		477A76D426121C9D00674F6B /* Money */ = {
+			isa = PBXGroup;
+			children = (
+				477A76DC26121CF800674F6B /* MoneyTop.storyboard */,
+			);
+			path = Money;
+			sourceTree = "<group>";
+		};
+		477A76D526121CA900674F6B /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				477A76D726121CE800674F6B /* NoteTop.storyboard */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
+		477A76D626121CB100674F6B /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				477A76E126121D1300674F6B /* MenuTop.storyboard */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		47B4DF6B260A41BC00D50ABC /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				47B4DF6C260A41E200D50ABC /* UIColorExtention.swift */,
+				477A76CD26120A7400674F6B /* UIImageExtention.swift */,
+				476FD6D32614B9EB00DCAA21 /* NavigationExtentions.swift */,
+				47C37CB62616059A00B6215B /* UIViewExtention.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		47B7F0672610EA1100544B41 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				47C37C8B2615F29B00B6215B /* Home */,
+			);
+			path = Xibs;
+			sourceTree = "<group>";
+		};
+		47B7F06D2610ED9300544B41 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				47B7F0682610EA5300544B41 /* BaseTabBar.storyboard */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		47B7F06E2610EDA400544B41 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				47B7F06F2610EDC600544B41 /* BaseTabBarViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		47C37C8B2615F29B00B6215B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				47C37C8C2615F2A800B6215B /* Chart */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		47C37C8C2615F2A800B6215B /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				47C37C962615F3A300B6215B /* ChartListCollectionViewCell.xib */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		47C37C952615F38300B6215B /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				47C37C8D2615F2C200B6215B /* ChartListCollectionViewCell.swift */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		47EA7D81261C64C5007536AC /* Money */ = {
+			isa = PBXGroup;
+			children = (
+				47EA7D82261C64D8007536AC /* MoneyTopViewController.swift */,
+			);
+			path = Money;
+			sourceTree = "<group>";
+		};
+		47EF6EF62608EEC500862E63 = {
+			isa = PBXGroup;
+			children = (
+				47EF6F012608EEC500862E63 /* KaBook */,
+				47EF6F182608EEC600862E63 /* KaBookTests */,
+				47EF6F232608EEC600862E63 /* KaBookUITests */,
+				47EF6F002608EEC500862E63 /* Products */,
+				A153EE2989D47421487B0AD3 /* Pods */,
+				40061BA871E640E7C756846B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		47EF6F002608EEC500862E63 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				47EF6EFF2608EEC500862E63 /* KaBook.app */,
+				47EF6F152608EEC600862E63 /* KaBookTests.xctest */,
+				47EF6F202608EEC600862E63 /* KaBookUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		47EF6F012608EEC500862E63 /* KaBook */ = {
+			isa = PBXGroup;
+			children = (
+				47EF6F352608F2BF00862E63 /* Model */,
+				47EF6F362608F2D300862E63 /* View */,
+				47EF6F372608F2E100862E63 /* Controller */,
+				47EF6F0B2608EEC600862E63 /* Assets.xcassets */,
+				47EF6F0D2608EEC600862E63 /* LaunchScreen.storyboard */,
+				47EF6F102608EEC600862E63 /* Info.plist */,
+				47EF6F4B2608FC3F00862E63 /* GoogleService-Info.plist */,
+			);
+			path = KaBook;
+			sourceTree = "<group>";
+		};
+		47EF6F182608EEC600862E63 /* KaBookTests */ = {
+			isa = PBXGroup;
+			children = (
+				47EF6F192608EEC600862E63 /* KaBookTests.swift */,
+				47EF6F1B2608EEC600862E63 /* Info.plist */,
+			);
+			path = KaBookTests;
+			sourceTree = "<group>";
+		};
+		47EF6F232608EEC600862E63 /* KaBookUITests */ = {
+			isa = PBXGroup;
+			children = (
+				47EF6F242608EEC600862E63 /* KaBookUITests.swift */,
+				47EF6F262608EEC600862E63 /* Info.plist */,
+			);
+			path = KaBookUITests;
+			sourceTree = "<group>";
+		};
+		47EF6F352608F2BF00862E63 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				47B4DF6B260A41BC00D50ABC /* Extentions */,
+				47EF6F022608EEC500862E63 /* AppDelegate.swift */,
+				47EF6F042608EEC500862E63 /* SceneDelegate.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		47EF6F362608F2D300862E63 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				47EA7D81261C64C5007536AC /* Money */,
+				476FD6C62614B22800DCAA21 /* Home */,
+				476FD6C52614B21C00DCAA21 /* Account */,
+				47B7F06E2610EDA400544B41 /* TabBar */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		47EF6F372608F2E100862E63 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				477A76D226121C1E00674F6B /* Storyboards */,
+				47B7F0672610EA1100544B41 /* Xibs */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A153EE2989D47421487B0AD3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FE6078004CD79A234F3FEE8E /* Pods-KaBook.debug.xcconfig */,
+				9E323EA2A0CF66F1D2FCC338 /* Pods-KaBook.release.xcconfig */,
+				A5D5DA325B29621FEC2A5E39 /* Pods-KaBook-KaBookUITests.debug.xcconfig */,
+				D1BD8099E51612146FED069D /* Pods-KaBook-KaBookUITests.release.xcconfig */,
+				B21153FDA5EBEE36F987204D /* Pods-KaBookTests.debug.xcconfig */,
+				FBEBA81D9603E31E4B311F7B /* Pods-KaBookTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		47EF6EFE2608EEC500862E63 /* KaBook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 47EF6F292608EEC600862E63 /* Build configuration list for PBXNativeTarget "KaBook" */;
+			buildPhases = (
+				4256BD33A77AEA986A28BCAF /* [CP] Check Pods Manifest.lock */,
+				47EF6EFB2608EEC500862E63 /* Sources */,
+				47EF6EFC2608EEC500862E63 /* Frameworks */,
+				47EF6EFD2608EEC500862E63 /* Resources */,
+				B34761900AD25B703529EB05 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KaBook;
+			productName = KaBook;
+			productReference = 47EF6EFF2608EEC500862E63 /* KaBook.app */;
+			productType = "com.apple.product-type.application";
+		};
+		47EF6F142608EEC600862E63 /* KaBookTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 47EF6F2C2608EEC600862E63 /* Build configuration list for PBXNativeTarget "KaBookTests" */;
+			buildPhases = (
+				F9BCB875C26966635943F8F4 /* [CP] Check Pods Manifest.lock */,
+				47EF6F112608EEC600862E63 /* Sources */,
+				47EF6F122608EEC600862E63 /* Frameworks */,
+				47EF6F132608EEC600862E63 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				47EF6F172608EEC600862E63 /* PBXTargetDependency */,
+			);
+			name = KaBookTests;
+			productName = KaBookTests;
+			productReference = 47EF6F152608EEC600862E63 /* KaBookTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		47EF6F1F2608EEC600862E63 /* KaBookUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 47EF6F2F2608EEC600862E63 /* Build configuration list for PBXNativeTarget "KaBookUITests" */;
+			buildPhases = (
+				E44945ACE07F81DD371515E4 /* [CP] Check Pods Manifest.lock */,
+				47EF6F1C2608EEC600862E63 /* Sources */,
+				47EF6F1D2608EEC600862E63 /* Frameworks */,
+				47EF6F1E2608EEC600862E63 /* Resources */,
+				6E7A197A52AF5F68FE60FDAE /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				47EF6F222608EEC600862E63 /* PBXTargetDependency */,
+			);
+			name = KaBookUITests;
+			productName = KaBookUITests;
+			productReference = 47EF6F202608EEC600862E63 /* KaBookUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		47EF6EF72608EEC500862E63 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					47EF6EFE2608EEC500862E63 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					47EF6F142608EEC600862E63 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 47EF6EFE2608EEC500862E63;
+					};
+					47EF6F1F2608EEC600862E63 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 47EF6EFE2608EEC500862E63;
+					};
+				};
+			};
+			buildConfigurationList = 47EF6EFA2608EEC500862E63 /* Build configuration list for PBXProject "KaBook" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 47EF6EF62608EEC500862E63;
+			productRefGroup = 47EF6F002608EEC500862E63 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				47EF6EFE2608EEC500862E63 /* KaBook */,
+				47EF6F142608EEC600862E63 /* KaBookTests */,
+				47EF6F1F2608EEC600862E63 /* KaBookUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		47EF6EFD2608EEC500862E63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47EF6F422608F87100862E63 /* Login.storyboard in Resources */,
+				477A76DD26121CF800674F6B /* MoneyTop.storyboard in Resources */,
+				47EF6F0F2608EEC600862E63 /* LaunchScreen.storyboard in Resources */,
+				477A76E226121D1300674F6B /* MenuTop.storyboard in Resources */,
+				47C37C972615F3A300B6215B /* ChartListCollectionViewCell.xib in Resources */,
+				477A76D826121CE800674F6B /* NoteTop.storyboard in Resources */,
+				471993DE260A48E5000CDE57 /* SignUp.storyboard in Resources */,
+				47EF6F4C2608FC3F00862E63 /* GoogleService-Info.plist in Resources */,
+				47EF6F0C2608EEC600862E63 /* Assets.xcassets in Resources */,
+				47EF6F0A2608EEC500862E63 /* HomeTop.storyboard in Resources */,
+				47B7F0692610EA5300544B41 /* BaseTabBar.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47EF6F132608EEC600862E63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47EF6F1E2608EEC600862E63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4256BD33A77AEA986A28BCAF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KaBook-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6E7A197A52AF5F68FE60FDAE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KaBook-KaBookUITests/Pods-KaBook-KaBookUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KaBook-KaBookUITests/Pods-KaBook-KaBookUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KaBook-KaBookUITests/Pods-KaBook-KaBookUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B34761900AD25B703529EB05 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KaBook/Pods-KaBook-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KaBook/Pods-KaBook-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KaBook/Pods-KaBook-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E44945ACE07F81DD371515E4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KaBook-KaBookUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9BCB875C26966635943F8F4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KaBookTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		47EF6EFB2608EEC500862E63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				477A76CE26120A7400674F6B /* UIImageExtention.swift in Sources */,
+				47EA7D83261C64D8007536AC /* MoneyTopViewController.swift in Sources */,
+				47B7F0702610EDC600544B41 /* BaseTabBarViewController.swift in Sources */,
+				471993E3260A4945000CDE57 /* SignUpViewController.swift in Sources */,
+				47EF6F472608F89B00862E63 /* LoginViewController.swift in Sources */,
+				47EF6F072608EEC500862E63 /* HomeViewController.swift in Sources */,
+				47B4DF6D260A41E200D50ABC /* UIColorExtention.swift in Sources */,
+				476FD6D42614B9EB00DCAA21 /* NavigationExtentions.swift in Sources */,
+				47C37C8E2615F2C200B6215B /* ChartListCollectionViewCell.swift in Sources */,
+				47EF6F032608EEC500862E63 /* AppDelegate.swift in Sources */,
+				47C37CB72616059A00B6215B /* UIViewExtention.swift in Sources */,
+				47EF6F052608EEC500862E63 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47EF6F112608EEC600862E63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47EF6F1A2608EEC600862E63 /* KaBookTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47EF6F1C2608EEC600862E63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47EF6F252608EEC600862E63 /* KaBookUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		47EF6F172608EEC600862E63 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 47EF6EFE2608EEC500862E63 /* KaBook */;
+			targetProxy = 47EF6F162608EEC600862E63 /* PBXContainerItemProxy */;
+		};
+		47EF6F222608EEC600862E63 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 47EF6EFE2608EEC500862E63 /* KaBook */;
+			targetProxy = 47EF6F212608EEC600862E63 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		47EF6F082608EEC500862E63 /* HomeTop.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				47EF6F092608EEC500862E63 /* Base */,
+			);
+			name = HomeTop.storyboard;
+			sourceTree = "<group>";
+		};
+		47EF6F0D2608EEC600862E63 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				47EF6F0E2608EEC600862E63 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		47EF6F272608EEC600862E63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		47EF6F282608EEC600862E63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		47EF6F2A2608EEC600862E63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE6078004CD79A234F3FEE8E /* Pods-KaBook.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PU7SQD8LJ9;
+				INFOPLIST_FILE = KaBook/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nandeyanen.KaBook;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		47EF6F2B2608EEC600862E63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E323EA2A0CF66F1D2FCC338 /* Pods-KaBook.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PU7SQD8LJ9;
+				INFOPLIST_FILE = KaBook/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nandeyanen.KaBook;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		47EF6F2D2608EEC600862E63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B21153FDA5EBEE36F987204D /* Pods-KaBookTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PU7SQD8LJ9;
+				INFOPLIST_FILE = KaBookTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nandeyanen.KaBookTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KaBook.app/KaBook";
+			};
+			name = Debug;
+		};
+		47EF6F2E2608EEC600862E63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBEBA81D9603E31E4B311F7B /* Pods-KaBookTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PU7SQD8LJ9;
+				INFOPLIST_FILE = KaBookTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nandeyanen.KaBookTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KaBook.app/KaBook";
+			};
+			name = Release;
+		};
+		47EF6F302608EEC600862E63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5D5DA325B29621FEC2A5E39 /* Pods-KaBook-KaBookUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PU7SQD8LJ9;
+				INFOPLIST_FILE = KaBookUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nandeyanen.KaBookUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KaBook;
+			};
+			name = Debug;
+		};
+		47EF6F312608EEC600862E63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1BD8099E51612146FED069D /* Pods-KaBook-KaBookUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PU7SQD8LJ9;
+				INFOPLIST_FILE = KaBookUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nandeyanen.KaBookUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KaBook;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		47EF6EFA2608EEC500862E63 /* Build configuration list for PBXProject "KaBook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47EF6F272608EEC600862E63 /* Debug */,
+				47EF6F282608EEC600862E63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		47EF6F292608EEC600862E63 /* Build configuration list for PBXNativeTarget "KaBook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47EF6F2A2608EEC600862E63 /* Debug */,
+				47EF6F2B2608EEC600862E63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		47EF6F2C2608EEC600862E63 /* Build configuration list for PBXNativeTarget "KaBookTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47EF6F2D2608EEC600862E63 /* Debug */,
+				47EF6F2E2608EEC600862E63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		47EF6F2F2608EEC600862E63 /* Build configuration list for PBXNativeTarget "KaBookUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47EF6F302608EEC600862E63 /* Debug */,
+				47EF6F312608EEC600862E63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 47EF6EF72608EEC500862E63 /* Project object */;
+}
