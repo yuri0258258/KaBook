@@ -41,7 +41,7 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
         return .init(width: width, height: 410)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

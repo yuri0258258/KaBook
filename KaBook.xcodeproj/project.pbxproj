@@ -10,6 +10,7 @@
 		238CBE3C70DEF56D33522DBE /* Pods_KaBookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56A5203B1534DDD23308922E /* Pods_KaBookTests.framework */; };
 		471993DE260A48E5000CDE57 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 471993DD260A48E5000CDE57 /* SignUp.storyboard */; };
 		471993E3260A4945000CDE57 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471993E2260A4945000CDE57 /* SignUpViewController.swift */; };
+		476DF075261F370000E6B236 /* MoneyTopNoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476DF074261F370000E6B236 /* MoneyTopNoteTableViewCell.xib */; };
 		476FD6D42614B9EB00DCAA21 /* NavigationExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476FD6D32614B9EB00DCAA21 /* NavigationExtentions.swift */; };
 		477A76CE26120A7400674F6B /* UIImageExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477A76CD26120A7400674F6B /* UIImageExtention.swift */; };
 		477A76D826121CE800674F6B /* NoteTop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 477A76D726121CE800674F6B /* NoteTop.storyboard */; };
@@ -23,6 +24,8 @@
 		47C37C8E2615F2C200B6215B /* ChartListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C37C8D2615F2C200B6215B /* ChartListCollectionViewCell.swift */; };
 		47C37C972615F3A300B6215B /* ChartListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47C37C962615F3A300B6215B /* ChartListCollectionViewCell.xib */; };
 		47C37CB72616059A00B6215B /* UIViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C37CB62616059A00B6215B /* UIViewExtention.swift */; };
+		47D219BF2621FACA00485069 /* MoneyTopNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D219BE2621FACA00485069 /* MoneyTopNoteTableViewCell.swift */; };
+		47D219C52622089900485069 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D219C42622089900485069 /* PaddingLabel.swift */; };
 		47EA7D83261C64D8007536AC /* MoneyTopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EA7D82261C64D8007536AC /* MoneyTopViewController.swift */; };
 		47EF6F032608EEC500862E63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF6F022608EEC500862E63 /* AppDelegate.swift */; };
 		47EF6F052608EEC500862E63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF6F042608EEC500862E63 /* SceneDelegate.swift */; };
@@ -60,6 +63,7 @@
 		4496BB643B52B2D176BEA1E0 /* Pods_KaBook_KaBookUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KaBook_KaBookUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		471993DD260A48E5000CDE57 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		471993E2260A4945000CDE57 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		476DF074261F370000E6B236 /* MoneyTopNoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoneyTopNoteTableViewCell.xib; sourceTree = "<group>"; };
 		476FD6D32614B9EB00DCAA21 /* NavigationExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationExtentions.swift; sourceTree = "<group>"; };
 		477A76CD26120A7400674F6B /* UIImageExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtention.swift; sourceTree = "<group>"; };
 		477A76D726121CE800674F6B /* NoteTop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoteTop.storyboard; sourceTree = "<group>"; };
@@ -73,6 +77,8 @@
 		47C37C8D2615F2C200B6215B /* ChartListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartListCollectionViewCell.swift; sourceTree = "<group>"; };
 		47C37C962615F3A300B6215B /* ChartListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartListCollectionViewCell.xib; sourceTree = "<group>"; };
 		47C37CB62616059A00B6215B /* UIViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtention.swift; sourceTree = "<group>"; };
+		47D219BE2621FACA00485069 /* MoneyTopNoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTopNoteTableViewCell.swift; sourceTree = "<group>"; };
+		47D219C42622089900485069 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		47EA7D82261C64D8007536AC /* MoneyTopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTopViewController.swift; sourceTree = "<group>"; };
 		47EF6EFF2608EEC500862E63 /* KaBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47EF6F022608EEC500862E63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +143,30 @@
 				56A5203B1534DDD23308922E /* Pods_KaBookTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		476DF069261F357600E6B236 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				47D219BE2621FACA00485069 /* MoneyTopNoteTableViewCell.swift */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
+		476DF072261F36D200E6B236 /* Money */ = {
+			isa = PBXGroup;
+			children = (
+				476DF073261F36DB00E6B236 /* Note */,
+			);
+			path = Money;
+			sourceTree = "<group>";
+		};
+		476DF073261F36DB00E6B236 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				476DF074261F370000E6B236 /* MoneyTopNoteTableViewCell.xib */,
+			);
+			path = Note;
 			sourceTree = "<group>";
 		};
 		476FD6C42614B20500DCAA21 /* Account  */ = {
@@ -230,6 +260,7 @@
 		47A07474261E407900DA5A0D /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				47D219C32622087D00485069 /* Label */,
 				47A07475261E409F00DA5A0D /* Nav */,
 			);
 			path = Utility;
@@ -257,6 +288,7 @@
 		47B7F0672610EA1100544B41 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				476DF072261F36D200E6B236 /* Money */,
 				47C37C8B2615F29B00B6215B /* Home */,
 			);
 			path = Xibs;
@@ -302,9 +334,18 @@
 			path = Chart;
 			sourceTree = "<group>";
 		};
+		47D219C32622087D00485069 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				47D219C42622089900485069 /* PaddingLabel.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
 		47EA7D81261C64C5007536AC /* Money */ = {
 			isa = PBXGroup;
 			children = (
+				476DF069261F357600E6B236 /* Note */,
 				47EA7D82261C64D8007536AC /* MoneyTopViewController.swift */,
 			);
 			path = Money;
@@ -524,6 +565,7 @@
 				47C37C972615F3A300B6215B /* ChartListCollectionViewCell.xib in Resources */,
 				477A76D826121CE800674F6B /* NoteTop.storyboard in Resources */,
 				471993DE260A48E5000CDE57 /* SignUp.storyboard in Resources */,
+				476DF075261F370000E6B236 /* MoneyTopNoteTableViewCell.xib in Resources */,
 				47EF6F4C2608FC3F00862E63 /* GoogleService-Info.plist in Resources */,
 				47EF6F0C2608EEC600862E63 /* Assets.xcassets in Resources */,
 				47EF6F0A2608EEC500862E63 /* HomeTop.storyboard in Resources */,
@@ -659,7 +701,9 @@
 				47EA7D83261C64D8007536AC /* MoneyTopViewController.swift in Sources */,
 				47B7F0702610EDC600544B41 /* BaseTabBarViewController.swift in Sources */,
 				471993E3260A4945000CDE57 /* SignUpViewController.swift in Sources */,
+				47D219C52622089900485069 /* PaddingLabel.swift in Sources */,
 				47EF6F472608F89B00862E63 /* LoginViewController.swift in Sources */,
+				47D219BF2621FACA00485069 /* MoneyTopNoteTableViewCell.swift in Sources */,
 				47EF6F072608EEC500862E63 /* HomeViewController.swift in Sources */,
 				47B4DF6D260A41E200D50ABC /* UIColorExtention.swift in Sources */,
 				476FD6D42614B9EB00DCAA21 /* NavigationExtentions.swift in Sources */,

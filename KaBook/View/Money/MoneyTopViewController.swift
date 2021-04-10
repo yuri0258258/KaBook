@@ -8,37 +8,48 @@ import CalculateCalendarLogic
 import RealmSwift
 
 class MoneyTopViewController: UIViewController {
-    //スケジュール内容
-    let labelDate = UILabel(frame: CGRect(x: 5, y: 650, width: 400, height: 50))
-    //「主なスケジュール」の表示
-    let labelTitle = UILabel(frame: CGRect(x: 0, y: 600, width: 180, height: 50))
-    //日付の表示
-    let carendarDate = UILabel(frame: CGRect(x: 5, y: 500, width: 200, height: 100))
+    @IBOutlet weak var carendarView: FSCalendar!
+    
+    @IBOutlet weak var moneyTopNoteTableView: UITableView!
+    
+    private var cellId = "cellId"
+    
+    var moneyTopNoteTableViewCellDateLabelText = ""
+    
+    var moneyTopNoteTableViewCellTextViewText = ""
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews()
         carendarViewSetUp()
         
-        //日付表示設定
-        carendarDate.text = ""
-        carendarDate.font = UIFont.systemFont(ofSize: 60.0)
-        carendarDate.textColor = .black
-        view.addSubview(carendarDate)
+        let realm = try! Realm()
+                try! realm.write() {
+                    // トランザクションを開始します。
+
+                    // PersonalInfoデータでnameが"sato"のデータを取得します。
+                    // (1件データが登録済みの前提です)
+                    let results = realm.objects(CalendarRealm.self)
+                    
+                    // データを削除します。
+                    realm.delete(results)
+                }
+        let carendarmemo = CalendarRealm()
+        carendarmemo.event = "剥がされた！こっから下がるかも売ろう！。と考えるひとが連続して出なくなった。その後買いたい！って人がまた来ればS高"
+        carendarmemo.date = "2021/04/11"
+        try! realm.write {
+            realm.add(carendarmemo)
+        }
         
-        //「主なスケジュール」表示設定
-        labelTitle.text = ""
-        labelTitle.textAlignment = .center
-        labelTitle.font = UIFont.systemFont(ofSize: 20.0)
-        view.addSubview(labelTitle)
-        
-        //スケジュール内容表示設定
-        labelDate.text = ""
-        labelDate.font = UIFont.systemFont(ofSize: 18.0)
-        view.addSubview(labelDate)
-    
+        //tableview
+        moneyTopNoteTableView.delegate = self
+        moneyTopNoteTableView.dataSource = self
+        moneyTopNoteTableView.register(UINib(nibName: "MoneyTopNoteTableViewCell", bundle: nil),forCellReuseIdentifier: cellId)
+
         //スケジュール追加ボタン
-        let addBtn = UIButton(frame: CGRect(x:self.view.frame.size.width - 80, y: self.view.frame.size.height - 300, width: 60, height: 60))
+        let addBtn = UIButton(frame: CGRect(x:self.view.frame.size.width - 80, y: self.view.frame.size.height - 200, width: 60, height: 60))
         addBtn.setTitle("+", for: UIControl.State())
         addBtn.setTitleColor(.white, for: UIControl.State())
         addBtn.backgroundColor = .orange
@@ -67,20 +78,14 @@ class MoneyTopViewController: UIViewController {
     
     //カレンダーのレイアウト
     private func carendarViewSetUp(){
-        //ステータスバーの高さ
-        let statusBarheight = getStatusBarHeight()
-        // ナビゲーションバーの高さ
-        let navigationBar = (navigationController?.navigationBar.frame.size.height)!
-        //カレンダー部分
-        let carendarView = FSCalendar(frame: CGRect(x: 0, y: statusBarheight + navigationBar + 20, width: UIScreen.main.bounds.size.width, height: 400))
-        
         carendarView.dataSource = self
         carendarView.delegate = self
         carendarView.today = nil
-        carendarView.tintColor = .red
-        view.backgroundColor = .white
         carendarView.backgroundColor = .white
-        
+        carendarView.headerHeight = 80
+        carendarView.weekdayHeight = 50
+        carendarView.calendarWeekdayView.backgroundColor = UIColor.rgb(red: 55, green: 161, blue: 246)
+
         // ヘッダを変更する
         carendarView.appearance.headerDateFormat = "YYYY年MM月"
         carendarView.calendarWeekdayView.weekdayLabels[0].text = "日"
@@ -90,6 +95,7 @@ class MoneyTopViewController: UIViewController {
         carendarView.calendarWeekdayView.weekdayLabels[4].text = "木"
         carendarView.calendarWeekdayView.weekdayLabels[5].text = "金"
         carendarView.calendarWeekdayView.weekdayLabels[6].text = "土"
+    
         view.addSubview(carendarView)
     }
 }
@@ -155,38 +161,47 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     
     //カレンダー処理(スケジュール表示処理)
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
-        labelTitle.text = "主なスケジュール"
-        labelTitle.backgroundColor = .orange
-        view.addSubview(labelTitle)
-        //予定がある場合、スケジュールをDBから取得・表示する。
-        //無い場合、「スケジュールはありません」と表示。
-        labelDate.text = "スケジュールはありません"
-        labelDate.textColor = .lightGray
-        view.addSubview(labelDate)
- 
         let tmpDate = Calendar(identifier: .gregorian)
         let year = tmpDate.component(.year, from: date)
         let month = tmpDate.component(.month, from: date)
         let day = tmpDate.component(.day, from: date)
         let m = String(format: "%02d", month)
         let d = String(format: "%02d", day)
-        let da = "\(year)/\(m)/\(d)"
+        let date = "\(year)/\(m)/\(d)"
     
         //クリックしたら、日付が表示される。
-        carendarDate.text = "\(m)/\(d)"
-        view.addSubview(carendarDate)
+        moneyTopNoteTableViewCellDateLabelText = "\(m)/\(d)"
+        //クリックされた日付にノートがない場合のノート内容
+        moneyTopNoteTableViewCellTextViewText = "書き込みがありません。"
         //スケジュール取得
         let realm = try! Realm()
         var result = realm.objects(CalendarRealm.self)
-        result = result.filter("date = '\(da)'")
-        print(result)
-        for ev in result {
-            if ev.date == da {
-                labelDate.text = ev.event
-                labelDate.textColor = .black
-                view.addSubview(labelDate)
+        //タップした日付のデータをRealmから探して、メモ内容を変数に格納
+        result = result.filter("date = '\(date)'")
+        for data in result {
+            if data.date == date {
+                moneyTopNoteTableViewCellTextViewText = data.event
             }
         }
+        moneyTopNoteTableView.reloadData()
     }
 }
 
+//MARK: - UITableViewDelegate
+extension MoneyTopViewController: UITableViewDelegate,UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 400
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = moneyTopNoteTableView.dequeueReusableCell(withIdentifier: cellId,for:indexPath) as! MoneyTopNoteTableViewCell
+        cell.moneyTopNoteTableViewCellDateLabel.text = moneyTopNoteTableViewCellDateLabelText
+        cell.moneyTopNoteTableViewCellTextView.text = moneyTopNoteTableViewCellTextViewText
+        return cell
+    }
+}

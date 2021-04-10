@@ -31,10 +31,44 @@
                     <view key="view" contentMode="scaleToFill" id="j4H-wK-sxt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iD8-cZ-Cla" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="88" width="414" height="400"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="KeJ-jw-yNJ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="weekdayTextSize">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RRr-87-emC">
+                                <rect key="frame" x="0.0" y="508" width="414" height="354"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="j07-Yj-3yR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RRr-87-emC" firstAttribute="leading" secondItem="j07-Yj-3yR" secondAttribute="leading" id="4io-3L-nfG"/>
+                            <constraint firstItem="RRr-87-emC" firstAttribute="top" secondItem="iD8-cZ-Cla" secondAttribute="bottom" constant="20" id="GhY-gf-PT9"/>
+                            <constraint firstItem="j07-Yj-3yR" firstAttribute="trailing" secondItem="iD8-cZ-Cla" secondAttribute="trailing" id="Wch-GB-bBE"/>
+                            <constraint firstItem="iD8-cZ-Cla" firstAttribute="leading" secondItem="j07-Yj-3yR" secondAttribute="leading" id="YsT-kx-zEN"/>
+                            <constraint firstItem="iD8-cZ-Cla" firstAttribute="top" secondItem="j07-Yj-3yR" secondAttribute="top" id="dlx-uK-gzn"/>
+                            <constraint firstItem="j07-Yj-3yR" firstAttribute="trailing" secondItem="RRr-87-emC" secondAttribute="trailing" id="pQl-0R-n6S"/>
+                            <constraint firstItem="j07-Yj-3yR" firstAttribute="bottom" secondItem="RRr-87-emC" secondAttribute="bottom" id="yvw-Uu-bGa"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="K6j-ML-cjo"/>
+                    <connections>
+                        <outlet property="carendarView" destination="iD8-cZ-Cla" id="cJ4-PA-VCK"/>
+                        <outlet property="moneyTopNoteTableView" destination="RRr-87-emC" id="PVT-2e-Z9x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tKq-h9-YXD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
