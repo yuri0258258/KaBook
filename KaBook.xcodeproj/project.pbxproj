@@ -10,6 +10,8 @@
 		238CBE3C70DEF56D33522DBE /* Pods_KaBookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56A5203B1534DDD23308922E /* Pods_KaBookTests.framework */; };
 		471993DE260A48E5000CDE57 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 471993DD260A48E5000CDE57 /* SignUp.storyboard */; };
 		471993E3260A4945000CDE57 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471993E2260A4945000CDE57 /* SignUpViewController.swift */; };
+		4731867C2624699B006C2AC5 /* MoneyNoteEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4731867B2624699B006C2AC5 /* MoneyNoteEdit.storyboard */; };
+		47318681262469E6006C2AC5 /* MoneyNoteEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47318680262469E6006C2AC5 /* MoneyNoteEditViewController.swift */; };
 		476DF075261F370000E6B236 /* MoneyTopNoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476DF074261F370000E6B236 /* MoneyTopNoteTableViewCell.xib */; };
 		476FD6D42614B9EB00DCAA21 /* NavigationExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476FD6D32614B9EB00DCAA21 /* NavigationExtentions.swift */; };
 		477A76CE26120A7400674F6B /* UIImageExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477A76CD26120A7400674F6B /* UIImageExtention.swift */; };
@@ -63,6 +65,8 @@
 		4496BB643B52B2D176BEA1E0 /* Pods_KaBook_KaBookUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KaBook_KaBookUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		471993DD260A48E5000CDE57 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		471993E2260A4945000CDE57 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4731867B2624699B006C2AC5 /* MoneyNoteEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoneyNoteEdit.storyboard; sourceTree = "<group>"; };
+		47318680262469E6006C2AC5 /* MoneyNoteEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyNoteEditViewController.swift; sourceTree = "<group>"; };
 		476DF074261F370000E6B236 /* MoneyTopNoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoneyTopNoteTableViewCell.xib; sourceTree = "<group>"; };
 		476FD6D32614B9EB00DCAA21 /* NavigationExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationExtentions.swift; sourceTree = "<group>"; };
 		477A76CD26120A7400674F6B /* UIImageExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtention.swift; sourceTree = "<group>"; };
@@ -145,10 +149,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4731867A26246983006C2AC5 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				4731867B2624699B006C2AC5 /* MoneyNoteEdit.storyboard */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
 		476DF069261F357600E6B236 /* Note */ = {
 			isa = PBXGroup;
 			children = (
 				47D219BE2621FACA00485069 /* MoneyTopNoteTableViewCell.swift */,
+				47318680262469E6006C2AC5 /* MoneyNoteEditViewController.swift */,
 			);
 			path = Note;
 			sourceTree = "<group>";
@@ -220,6 +233,7 @@
 		477A76D426121C9D00674F6B /* Money */ = {
 			isa = PBXGroup;
 			children = (
+				4731867A26246983006C2AC5 /* Note */,
 				477A76DC26121CF800674F6B /* MoneyTop.storyboard */,
 			);
 			path = Money;
@@ -559,6 +573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47EF6F422608F87100862E63 /* Login.storyboard in Resources */,
+				4731867C2624699B006C2AC5 /* MoneyNoteEdit.storyboard in Resources */,
 				477A76DD26121CF800674F6B /* MoneyTop.storyboard in Resources */,
 				47EF6F0F2608EEC600862E63 /* LaunchScreen.storyboard in Resources */,
 				477A76E226121D1300674F6B /* MenuTop.storyboard in Resources */,
@@ -713,6 +728,7 @@
 				47EF6F032608EEC500862E63 /* AppDelegate.swift in Sources */,
 				47C37CB72616059A00B6215B /* UIViewExtention.swift in Sources */,
 				47EF6F052608EEC500862E63 /* SceneDelegate.swift in Sources */,
+				47318681262469E6006C2AC5 /* MoneyNoteEditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,47 +25,12 @@ class MoneyTopViewController: UIViewController {
         setUpViews()
         carendarViewSetUp()
         
-        let realm = try! Realm()
-                try! realm.write() {
-                    // トランザクションを開始します。
-
-                    // PersonalInfoデータでnameが"sato"のデータを取得します。
-                    // (1件データが登録済みの前提です)
-                    let results = realm.objects(CalendarRealm.self)
-                    
-                    // データを削除します。
-                    realm.delete(results)
-                }
-        let carendarmemo = CalendarRealm()
-        carendarmemo.event = "剥がされた！こっから下がるかも売ろう！。と考えるひとが連続して出なくなった。その後買いたい！って人がまた来ればS高"
-        carendarmemo.date = "2021/04/11"
-        try! realm.write {
-            realm.add(carendarmemo)
-        }
-        
         //tableview
         moneyTopNoteTableView.delegate = self
         moneyTopNoteTableView.dataSource = self
+        moneyTopNoteTableView.tableFooterView = UIView()
         moneyTopNoteTableView.register(UINib(nibName: "MoneyTopNoteTableViewCell", bundle: nil),forCellReuseIdentifier: cellId)
-
-        //スケジュール追加ボタン
-        let addBtn = UIButton(frame: CGRect(x:self.view.frame.size.width - 80, y: self.view.frame.size.height - 200, width: 60, height: 60))
-        addBtn.setTitle("+", for: UIControl.State())
-        addBtn.setTitleColor(.white, for: UIControl.State())
-        addBtn.backgroundColor = .orange
-        addBtn.layer.cornerRadius = 30.0
-        addBtn.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
-        view.addSubview(addBtn)
     }
-    
-    
-    //画面遷移(スケジュール登録ページ)
-    @objc func onClick(_: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let SecondController = storyboard.instantiateViewController(withIdentifier: "Insert")
-        present(SecondController, animated: true, completion: nil)
-    }
-    
     
     private func setUpViews(){
         //navまわり
@@ -176,6 +141,7 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         //スケジュール取得
         let realm = try! Realm()
         var result = realm.objects(CalendarRealm.self)
+        print(result)
         //タップした日付のデータをRealmから探して、メモ内容を変数に格納
         result = result.filter("date = '\(date)'")
         for data in result {
@@ -202,6 +168,18 @@ extension MoneyTopViewController: UITableViewDelegate,UITableViewDataSource{
         let cell = moneyTopNoteTableView.dequeueReusableCell(withIdentifier: cellId,for:indexPath) as! MoneyTopNoteTableViewCell
         cell.moneyTopNoteTableViewCellDateLabel.text = moneyTopNoteTableViewCellDateLabelText
         cell.moneyTopNoteTableViewCellTextView.text = moneyTopNoteTableViewCellTextViewText
+        cell.moneyTopNoteTableViewCellDelegate = self
         return cell
+    }
+}
+
+//MARK: - MoneyTopNoteTableViewCellDelegate
+extension MoneyTopViewController: MoneyTopNoteTableViewCellDelegate {
+    func MoneyTopNoteTableViewCelltappedDetailButton() {
+        let storyboard = UIStoryboard(name: "MoneyNoteEdit", bundle: nil)
+        let moneyNoteEditViewController = storyboard.instantiateViewController(withIdentifier: "MoneyNoteEditViewController")
+        let nav = UINavigationController(rootViewController: moneyNoteEditViewController)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
     }
 }
