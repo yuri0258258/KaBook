@@ -65,6 +65,19 @@
                             <action selector="tappedDetailButton:" destination="Xp7-SN-0XY" eventType="touchUpInside" id="wUa-WZ-Scc"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpE-9c-Kky">
+                        <rect key="frame" x="348.5" y="265" width="200" height="30"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="200" id="Zkj-HL-l7I"/>
+                        </constraints>
+                        <state key="normal" title="書き込む">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="tappedEditButon:" destination="Xp7-SN-0XY" eventType="touchUpInside" id="1yo-u6-nKN"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="vMB-Wh-L3h" firstAttribute="top" secondItem="HOQ-iF-5Z5" secondAttribute="top" constant="25" id="8dq-Ey-lrA"/>
@@ -75,6 +88,8 @@
                     <constraint firstAttribute="trailing" secondItem="HCr-kH-DfA" secondAttribute="trailing" constant="30" id="ILb-dl-Dsc"/>
                     <constraint firstItem="Zc7-za-yQC" firstAttribute="leading" secondItem="HOQ-iF-5Z5" secondAttribute="leading" constant="30" id="PBr-QV-jK3"/>
                     <constraint firstItem="Zc7-za-yQC" firstAttribute="top" secondItem="vMB-Wh-L3h" secondAttribute="bottom" constant="20" id="RQ9-wH-AkS"/>
+                    <constraint firstItem="SpE-9c-Kky" firstAttribute="centerX" secondItem="HOQ-iF-5Z5" secondAttribute="centerX" id="T7d-J5-Awk"/>
+                    <constraint firstItem="SpE-9c-Kky" firstAttribute="top" secondItem="HCr-kH-DfA" secondAttribute="bottom" constant="30" id="ona-Lo-dIU"/>
                     <constraint firstItem="HCr-kH-DfA" firstAttribute="leading" secondItem="HOQ-iF-5Z5" secondAttribute="leading" constant="30" id="y2j-ad-SOR"/>
                 </constraints>
             </tableViewCellContentView>
@@ -82,6 +97,7 @@
                 <outlet property="MoneyTopNoteTableViewCellContentView" destination="HOQ-iF-5Z5" id="qBI-yt-2xx"/>
                 <outlet property="moneyTopNoteTableViewCellDateLabel" destination="vMB-Wh-L3h" id="23v-1f-dbB"/>
                 <outlet property="moneyTopNoteTableViewCellDetailButton" destination="vDR-xd-fiF" id="Qh9-Uk-0AN"/>
+                <outlet property="moneyTopNoteTableViewCellEditButton" destination="SpE-9c-Kky" id="o1K-2y-xsu"/>
                 <outlet property="moneyTopNoteTableViewCellTextView" destination="HCr-kH-DfA" id="GaD-bJ-pMk"/>
             </connections>
             <point key="canvasLocation" x="158.69565217391306" y="134.93303571428569"/>

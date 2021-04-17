@@ -14,6 +14,8 @@ class MoneyTopViewController: UIViewController {
     
     private var cellId = "cellId"
     
+    var moneyTopNoteTableViewHeight:CGFloat = 250
+    
     private var carendarDate: String?
     
     var moneyTopNoteTableViewCellDateLabelText = ""
@@ -52,7 +54,7 @@ class MoneyTopViewController: UIViewController {
         carendarView.headerHeight = 80
         carendarView.weekdayHeight = 50
         carendarView.calendarWeekdayView.backgroundColor = UIColor.rgb(red: 55, green: 161, blue: 246)
-
+        
         // ヘッダを変更する
         carendarView.appearance.headerDateFormat = "YYYY年MM月"
         carendarView.calendarWeekdayView.weekdayLabels[0].text = "日"
@@ -62,7 +64,7 @@ class MoneyTopViewController: UIViewController {
         carendarView.calendarWeekdayView.weekdayLabels[4].text = "木"
         carendarView.calendarWeekdayView.weekdayLabels[5].text = "金"
         carendarView.calendarWeekdayView.weekdayLabels[6].text = "土"
-    
+        
         view.addSubview(carendarView)
     }
 }
@@ -84,7 +86,7 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         let month = tmpCalendar.component(.month, from: date)
         let day = tmpCalendar.component(.day, from: date)
         let holiday = CalculateCalendarLogic()
-    
+        
         return holiday.judgeJapaneseHoliday(year: year, month: month, day: day)
     }
     
@@ -143,7 +145,6 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         //スケジュール取得
         let realm = try! Realm()
         var result = realm.objects(CalendarRealm.self)
-        print(result)
         //タップした日付のデータをRealmから探して、メモ内容を変数に格納
         result = result.filter("date = '\(date)'")
         for data in result {
@@ -159,7 +160,7 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
 extension MoneyTopViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
+        return moneyTopNoteTableViewHeight
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -174,8 +175,29 @@ extension MoneyTopViewController: UITableViewDelegate,UITableViewDataSource{
         }else{
             cell.MoneyTopNoteTableViewCellContentView.isHidden = false
         }
+        //ノートの書き込みがない場合のボタンテキスト変更
+        if moneyTopNoteTableViewCellTextViewText == "書き込みがありません。" {
+            cell.moneyTopNoteTableViewCellDetailButton.isHidden = true
+            cell.moneyTopNoteTableViewCellDetailButton.isEnabled = false
+            cell.moneyTopNoteTableViewCellEditButton.isHidden = false
+            cell.moneyTopNoteTableViewCellEditButton.isEnabled = true
+        }else{
+            cell.moneyTopNoteTableViewCellDetailButton.isHidden = false
+            cell.moneyTopNoteTableViewCellDetailButton.isEnabled = true
+            cell.moneyTopNoteTableViewCellEditButton.isHidden = true
+            cell.moneyTopNoteTableViewCellEditButton.isEnabled = false
+        }
+       
         cell.moneyTopNoteTableViewCellDateLabel.text = moneyTopNoteTableViewCellDateLabelText
         cell.moneyTopNoteTableViewCellTextView.text = moneyTopNoteTableViewCellTextViewText
+        //ノート内容の高さだけcellの高さを高くする
+        let moneyTopNoteTableViewCellTextViewHeight:CGFloat = 33
+        cell.moneyTopNoteTableViewCellTextView.sizeToFit()
+        if cell.moneyTopNoteTableViewCellTextView.frame.size.height > moneyTopNoteTableViewCellTextViewHeight {
+            moneyTopNoteTableViewHeight += cell.moneyTopNoteTableViewCellTextView.frame.size.height - moneyTopNoteTableViewCellTextViewHeight
+        }else{
+            moneyTopNoteTableViewHeight = 250
+        }
         cell.moneyTopNoteTableViewCellDelegate = self
         return cell
     }
@@ -183,12 +205,16 @@ extension MoneyTopViewController: UITableViewDelegate,UITableViewDataSource{
 
 //MARK: - MoneyTopNoteTableViewCellDelegate
 extension MoneyTopViewController: MoneyTopNoteTableViewCellDelegate {
-    func MoneyTopNoteTableViewCelltappedDetailButton() {
+    func moneyTopNoteTableViewCelltappedEditButton() {
         let storyboard = UIStoryboard(name: "MoneyNoteEdit", bundle: nil)
         let moneyNoteEditViewController = storyboard.instantiateViewController(withIdentifier: "MoneyNoteEditViewController") as! MoneyNoteEditViewController
         moneyNoteEditViewController.noteDate = carendarDate
         let nav = UINavigationController(rootViewController: moneyNoteEditViewController)
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
+    }
+    
+    func moneyTopNoteTableViewCelltappedDetailButton() {
+      print("収支ノート画面に遷移。準備中。")
     }
 }

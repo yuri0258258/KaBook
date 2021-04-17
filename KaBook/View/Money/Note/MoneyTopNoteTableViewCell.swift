@@ -8,7 +8,8 @@
 import UIKit
 
 protocol MoneyTopNoteTableViewCellDelegate: class{
-    func MoneyTopNoteTableViewCelltappedDetailButton()
+    func moneyTopNoteTableViewCelltappedDetailButton()
+    func moneyTopNoteTableViewCelltappedEditButton()
 }
 
 class MoneyTopNoteTableViewCell: UITableViewCell {
@@ -16,6 +17,7 @@ class MoneyTopNoteTableViewCell: UITableViewCell {
     @IBOutlet weak var moneyTopNoteTableViewCellDateLabel: UILabel!
     @IBOutlet weak var moneyTopNoteTableViewCellTextView: UITextView!
     @IBOutlet weak var moneyTopNoteTableViewCellDetailButton: UIButton!
+    @IBOutlet weak var moneyTopNoteTableViewCellEditButton: UIButton!
     
    weak var moneyTopNoteTableViewCellDelegate:MoneyTopNoteTableViewCellDelegate?
     
@@ -30,7 +32,11 @@ class MoneyTopNoteTableViewCell: UITableViewCell {
     
     private func SetUpViews(){
     }
+    
+    @IBAction func tappedEditButon(_ sender: Any) {
+        moneyTopNoteTableViewCellDelegate?.moneyTopNoteTableViewCelltappedEditButton()
+    }
     @IBAction func tappedDetailButton(_ sender: Any) {
-        moneyTopNoteTableViewCellDelegate?.MoneyTopNoteTableViewCelltappedDetailButton()
+        moneyTopNoteTableViewCellDelegate?.moneyTopNoteTableViewCelltappedDetailButton()
     }
 }
