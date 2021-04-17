@@ -9,7 +9,7 @@ import UIKit
 
 enum MoneyNoteEditError:Error {
     case noteTextNoneError
-    case error2
+    case moneyTextNotIntError
 }
 
 extension MoneyNoteEditError:LocalizedError{
@@ -17,8 +17,8 @@ extension MoneyNoteEditError:LocalizedError{
         switch self {
         case .noteTextNoneError:
             return "ノート内容に記述がありません。"
-        case .error2:
-            return "エラーメッセージ_２"
+        case .moneyTextNotIntError:
+            return "収支金額には数字を入力してください。"
         }
     }
 }

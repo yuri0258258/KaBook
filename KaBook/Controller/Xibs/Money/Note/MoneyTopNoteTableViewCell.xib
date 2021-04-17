@@ -16,8 +16,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="897" height="369"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日付が入ります。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMB-Wh-L3h">
-                        <rect key="frame" x="30" y="25" width="243" height="36"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日付が入ります" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMB-Wh-L3h">
+                        <rect key="frame" x="30" y="25" width="212.5" height="36"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                         <nil key="textColor"/>
@@ -79,6 +79,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="MoneyTopNoteTableViewCellContentView" destination="HOQ-iF-5Z5" id="qBI-yt-2xx"/>
                 <outlet property="moneyTopNoteTableViewCellDateLabel" destination="vMB-Wh-L3h" id="23v-1f-dbB"/>
                 <outlet property="moneyTopNoteTableViewCellDetailButton" destination="vDR-xd-fiF" id="Qh9-Uk-0AN"/>
                 <outlet property="moneyTopNoteTableViewCellTextView" destination="HCr-kH-DfA" id="GaD-bJ-pMk"/>

@@ -168,6 +168,12 @@ extension MoneyTopViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = moneyTopNoteTableView.dequeueReusableCell(withIdentifier: cellId,for:indexPath) as! MoneyTopNoteTableViewCell
+        //最初の読み込み時には表示しない
+        if moneyTopNoteTableViewCellDateLabelText == "" {
+            cell.MoneyTopNoteTableViewCellContentView.isHidden = true
+        }else{
+            cell.MoneyTopNoteTableViewCellContentView.isHidden = false
+        }
         cell.moneyTopNoteTableViewCellDateLabel.text = moneyTopNoteTableViewCellDateLabelText
         cell.moneyTopNoteTableViewCellTextView.text = moneyTopNoteTableViewCellTextViewText
         cell.moneyTopNoteTableViewCellDelegate = self
