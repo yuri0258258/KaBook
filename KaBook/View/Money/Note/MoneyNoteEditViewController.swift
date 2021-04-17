@@ -15,8 +15,11 @@ class MoneyNoteEditViewController: UIViewController {
     @IBOutlet weak var moneyTextField: UITextField!
     @IBOutlet weak var noteTextView: UITextView!
     @IBOutlet weak var contentViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var moneyPlusButton: UIButton!
+    @IBOutlet weak var moneyMinusButton: UIButton!
     
-    var date: String!
+    var noteDate: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews()
@@ -26,7 +29,7 @@ class MoneyNoteEditViewController: UIViewController {
         //これでスクロールの高さ調節
         contentViewHeightConstraint.constant = 1000
         //これなかったらスクロールしない
-      contentScrollView.contentSize = contentView.frame.size
+        contentScrollView.contentSize = contentView.frame.size
     }
     
     private func setUpViews(){
@@ -40,29 +43,86 @@ class MoneyNoteEditViewController: UIViewController {
             navigationItem.leftBarButtonItem = backBarButton
             navigationItem.leftBarButtonItem?.tintColor = .white
         }
+        //収支金額プラス、マイナスボタンまわり
+        moneyPlusButton.setImage(UIImage(named: "plusButton"), for: .selected)
+        moneyPlusButton.setImage(UIImage(named: "unselected_plusButton"), for: .normal)
+        moneyMinusButton.setImage(UIImage(named: "minusButton"), for: .selected)
+        moneyMinusButton.setImage(UIImage(named: "unselected_minusButton"), for: .normal)
+        
+        //moneyTextField
+        moneyTextField.text = "0"
     }
     
+    @IBAction func tappedPlusButton(_ sender: Any) {
+        moneyPlusButton.isSelected = true
+        moneyMinusButton.isSelected = false
+    }
     
+    @IBAction func tappedMinusButton(_ sender: Any) {
+        moneyMinusButton.isSelected = true
+        moneyPlusButton.isSelected = false
+    }
     @objc private func tappedbackButton(){
-     navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     @IBAction func tappedNoteAddButton(_ sender: Any) {
+        
+        //エラーチェック
+        
+        if noteTextView.text == "" {
+            let noteTextNoneError = MoneyNoteEditError.noteTextNoneError
+            let ac = UIAlertController(title: "🚨", message: noteTextNoneError.errorDescription, preferredStyle: .alert)
+              ac.addAction(UIAlertAction(title: "OK", style: .default))
+              present(ac,animated: true)
+            print("エラー発生")
+            return
+        }
+        
+        
         print("データ書き込み開始")
         guard let notetext = noteTextView.text else {
             return
         }
-            let realm = try! Realm()
-             
-            try! realm.write {
-                //日付表示の内容とスケジュール入力の内容が書き込まれる。
-                let calendarRealm = [CalendarRealm(value: ["date": "2021/04/11", "event": notetext])]
-                realm.add(calendarRealm)
-                print("データ書き込み中")
-            }
-
+        
+        let money = moneyTextFieldCheck(moneyTextField: moneyTextField)
+        
+        let realm = try! Realm()
+        try! realm.write {
+            //日付表示の内容とスケジュール入力の内容が書き込まれる。
+            let calendarRealm = [CalendarRealm(value: ["date": noteDate, "note": notetext,"money": money])]
+            realm.add(calendarRealm)
+            print("データ書き込み中")
+        }
         print("データ書き込み完了")
-
+        
         //前のページに戻る
-        dismiss(animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "MoneyTop", bundle: nil)
+        let moneyTopViewController = storyboard.instantiateViewController(withIdentifier: "MoneyTopViewController") as! MoneyTopViewController
+        let nav = UINavigationController(rootViewController: moneyTopViewController)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true) {
+            moneyTopViewController.moneyTopNoteTableView.reloadData()
+        }
+    }
+    
+    //moneyTextFieldの値のチェックと変換
+    private func moneyTextFieldCheck(moneyTextField: UITextField) -> String{
+        //moneyTextFieldの値が空か0の時は0を返す
+        if (moneyTextField.text == "" || moneyTextField.text == "0"){
+            return "0"
+        }else{
+            //moneyTextFieldの値が数字かどうか
+            guard let money = Int(moneyTextField.text!) else {
+                return "0"
+            }
+            //収支金額プラスボタンとマイナスボタンのどちらが選ばれているかのチェック
+            if moneyMinusButton.isSelected {
+                let minusMoney = "-\(abs(money))"
+                return minusMoney
+            }else{
+                let plusMoney = "+\(abs(money))"
+                return plusMoney
+            }
+        }
     }
 }

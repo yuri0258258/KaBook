@@ -14,6 +14,8 @@ class MoneyTopViewController: UIViewController {
     
     private var cellId = "cellId"
     
+    private var carendarDate: String?
+    
     var moneyTopNoteTableViewCellDateLabelText = ""
     
     var moneyTopNoteTableViewCellTextViewText = ""
@@ -133,7 +135,7 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         let m = String(format: "%02d", month)
         let d = String(format: "%02d", day)
         let date = "\(year)/\(m)/\(d)"
-    
+        carendarDate = "\(year)/\(m)/\(d)"
         //クリックしたら、日付が表示される。
         moneyTopNoteTableViewCellDateLabelText = "\(m)/\(d)"
         //クリックされた日付にノートがない場合のノート内容
@@ -146,7 +148,7 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         result = result.filter("date = '\(date)'")
         for data in result {
             if data.date == date {
-                moneyTopNoteTableViewCellTextViewText = data.event
+                moneyTopNoteTableViewCellTextViewText = data.note
             }
         }
         moneyTopNoteTableView.reloadData()
@@ -177,7 +179,8 @@ extension MoneyTopViewController: UITableViewDelegate,UITableViewDataSource{
 extension MoneyTopViewController: MoneyTopNoteTableViewCellDelegate {
     func MoneyTopNoteTableViewCelltappedDetailButton() {
         let storyboard = UIStoryboard(name: "MoneyNoteEdit", bundle: nil)
-        let moneyNoteEditViewController = storyboard.instantiateViewController(withIdentifier: "MoneyNoteEditViewController")
+        let moneyNoteEditViewController = storyboard.instantiateViewController(withIdentifier: "MoneyNoteEditViewController") as! MoneyNoteEditViewController
+        moneyNoteEditViewController.noteDate = carendarDate
         let nav = UINavigationController(rootViewController: moneyNoteEditViewController)
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)

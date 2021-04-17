@@ -10,5 +10,6 @@ import RealmSwift
 
 class CalendarRealm: Object {
     @objc dynamic var date: String = ""
-    @objc dynamic var event: String = ""
+    @objc dynamic var note: String = ""
+    @objc dynamic var money: String = "0"
 }

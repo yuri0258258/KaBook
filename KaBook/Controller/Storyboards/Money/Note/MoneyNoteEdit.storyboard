@@ -50,7 +50,10 @@
                                                                     <constraint firstAttribute="width" constant="30" id="VbE-wD-tWp"/>
                                                                     <constraint firstAttribute="width" secondItem="Szc-vl-IYk" secondAttribute="height" multiplier="1:1" id="XPs-w9-wfw"/>
                                                                 </constraints>
-                                                                <state key="normal" image="unselected_plusButton"/>
+                                                                <state key="normal" image="plusButton"/>
+                                                                <connections>
+                                                                    <action selector="tappedPlusButton:" destination="aTg-9U-le9" eventType="touchUpInside" id="hQg-KP-Mh1"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYz-fz-dyx">
                                                                 <rect key="frame" x="40" y="0.0" width="30" height="30"/>
@@ -58,7 +61,10 @@
                                                                     <constraint firstAttribute="width" secondItem="QYz-fz-dyx" secondAttribute="height" multiplier="1:1" id="rBz-7I-2hT"/>
                                                                     <constraint firstAttribute="width" constant="30" id="ukp-5M-QeZ"/>
                                                                 </constraints>
-                                                                <state key="normal" image="unselected_minusButton"/>
+                                                                <state key="normal" image="minusButton"/>
+                                                                <connections>
+                                                                    <action selector="tappedMinusButton:" destination="aTg-9U-le9" eventType="touchUpInside" id="dfB-gG-5x6"/>
+                                                                </connections>
                                                             </button>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9qc-wN-zri">
                                                                 <rect key="frame" x="80" y="0.0" width="274" height="30"/>
@@ -167,6 +173,8 @@
                         <outlet property="contentScrollView" destination="4gB-7J-l9Y" id="pX7-hO-Dsv"/>
                         <outlet property="contentView" destination="Qhs-nd-8K8" id="3I3-uR-Jlr"/>
                         <outlet property="contentViewHeightConstraint" destination="vy9-zB-89L" id="MRS-WM-x1V"/>
+                        <outlet property="moneyMinusButton" destination="QYz-fz-dyx" id="jOm-gN-HdI"/>
+                        <outlet property="moneyPlusButton" destination="Szc-vl-IYk" id="smf-zS-Ps0"/>
                         <outlet property="moneyTextField" destination="9qc-wN-zri" id="sbx-yu-Flc"/>
                         <outlet property="moneyView" destination="Emv-af-j4P" id="lKc-9L-zF4"/>
                         <outlet property="noteTextView" destination="vsK-YA-yC8" id="4R2-5e-IaY"/>
@@ -178,8 +186,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="unselected_minusButton" width="64" height="64"/>
-        <image name="unselected_plusButton" width="64" height="64"/>
+        <image name="minusButton" width="64" height="64"/>
+        <image name="plusButton" width="64" height="64"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
