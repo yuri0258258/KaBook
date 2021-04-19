@@ -14,16 +14,25 @@ class MoneyNoteEditViewController: UIViewController {
     @IBOutlet weak var moneyView: UIView!
     @IBOutlet weak var moneyTextField: UITextField!
     @IBOutlet weak var noteTextView: UITextView!
+    @IBOutlet weak var noteTextViewHeight: NSLayoutConstraint!
     @IBOutlet weak var contentViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var moneyPlusButton: UIButton!
     @IBOutlet weak var moneyMinusButton: UIButton!
+    
+    private lazy var moneyNoteEditAccessoryView: MoneyNoteEditAccessoryView = {
+        let view = MoneyNoteEditAccessoryView()
+        view.frame = .init(x: 0,y: 0,width: view.frame.width,height: 70)
+        return view
+    }()
     
     var noteDate: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews()
+        tappedView()
     }
+    
     
     override func viewDidLayoutSubviews() {
         //これでスクロールの高さ調節
@@ -31,6 +40,17 @@ class MoneyNoteEditViewController: UIViewController {
         //これなかったらスクロールしない
         contentScrollView.contentSize = contentView.frame.size
     }
+    
+    //他画面がタップされた時にdismissKeyboard()が呼ばれる関数
+    private func tappedView(){
+        let tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGR.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGR)
+    }
+    //キーボード閉じる
+    @objc func dismissKeyboard() {
+           self.view.endEditing(true)
+       }
     
     private func setUpViews(){
         //navまわり
@@ -51,6 +71,10 @@ class MoneyNoteEditViewController: UIViewController {
         
         //moneyTextField
         moneyTextField.text = "0"
+        moneyTextField.delegate = self
+        //noteTextView
+        noteTextView.delegate = self
+        noteTextView.inputAccessoryView = moneyNoteEditAccessoryView
     }
     
     @IBAction func tappedPlusButton(_ sender: Any) {
@@ -131,5 +155,33 @@ class MoneyNoteEditViewController: UIViewController {
           ac.addAction(UIAlertAction(title: "OK", style: .default))
           present(ac,animated: true)
         print("エラー発生")
+    }
+}
+//MARK: - UITextFieldDelegate
+extension MoneyNoteEditViewController: UITextFieldDelegate{
+    // returnボタン押下で閉じる場合
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+           textField.resignFirstResponder()
+           return true
+       }
+}
+
+//MARK: - UITextFieldDelegate
+extension MoneyNoteEditViewController: UITextViewDelegate{
+    func textViewDidChange(_ textView: UITextView) {
+        self.noteTextView.sizeToFit()
+        let resizedHeight = self.noteTextView.frame.size.height
+        
+        if resizedHeight > noteTextViewHeight.constant {
+            self.noteTextViewHeight.constant = resizedHeight
+            self.noteTextView.frame.size = CGSize(width: self.view.frame.width - 20, height: resizedHeight)
+            
+             let addingHeight = resizedHeight - noteTextViewHeight.constant
+            noteTextViewHeight.constant += addingHeight
+            noteTextViewHeight.constant = resizedHeight
+        }else{
+            noteTextViewHeight.constant = 200
+            self.noteTextView.frame.size = CGSize(width: self.view.frame.width - 20, height: resizedHeight)
+        }
     }
 }

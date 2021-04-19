@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoneyNoteEditAccessoryView" customModule="KaBook" customModuleProvider="target">
+            <connections>
+                <outlet property="photoButton" destination="L8h-bk-dfw" id="3R2-Bs-6vP"/>
+                <outlet property="textBoldButton" destination="slm-oz-BsD" id="nVT-f1-ee3"/>
+                <outlet property="textColor" destination="T2N-WM-tgL" id="en6-I6-gg7"/>
+                <outlet property="textLineButton" destination="iMm-2E-hFP" id="ILt-ZZ-hYs"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="666" height="164"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="CLm-Wn-CWm">
+                    <rect key="frame" x="20" y="10" width="626" height="144"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8h-bk-dfw">
+                            <rect key="frame" x="0.0" y="52" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="L8h-bk-dfw" secondAttribute="height" multiplier="1:1" id="6dp-DC-dH6"/>
+                                <constraint firstAttribute="width" constant="40" id="fhR-ZM-eES"/>
+                            </constraints>
+                            <state key="normal" image="accessoryview_camera"/>
+                            <connections>
+                                <action selector="tappedPhotoButton:" destination="-1" eventType="touchUpInside" id="EaC-Vc-U77"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="slm-oz-BsD">
+                            <rect key="frame" x="195.5" y="52" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="G9w-Ac-cDw"/>
+                                <constraint firstAttribute="width" secondItem="slm-oz-BsD" secondAttribute="height" multiplier="1:1" id="UGD-Sq-Y98"/>
+                            </constraints>
+                            <state key="normal" image="accessoryview_textbold"/>
+                            <connections>
+                                <action selector="tappedTextBoldButton:" destination="-1" eventType="touchUpInside" id="Pjp-yB-Isp"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMm-2E-hFP">
+                            <rect key="frame" x="390.5" y="52" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="iMm-2E-hFP" secondAttribute="height" multiplier="1:1" id="1xg-SL-Ql4"/>
+                                <constraint firstAttribute="width" constant="40" id="VVH-sO-Vbc"/>
+                            </constraints>
+                            <state key="normal" image="accessoryview_textline"/>
+                            <connections>
+                                <action selector="tappedTextLineButton:" destination="-1" eventType="touchUpInside" id="DI7-iV-1P1"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2N-WM-tgL">
+                            <rect key="frame" x="586" y="52" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="T2N-WM-tgL" secondAttribute="height" multiplier="1:1" id="XCd-1s-E1z"/>
+                                <constraint firstAttribute="width" constant="40" id="ZTM-pr-4fH"/>
+                            </constraints>
+                            <state key="normal" image="accessoryview_textcolor"/>
+                            <connections>
+                                <action selector="tappedTextColorButton:" destination="-1" eventType="touchUpInside" id="7PY-jI-eBi"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemGray6Color"/>
+            <constraints>
+                <constraint firstItem="CLm-Wn-CWm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="9ow-wK-hgY"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="CLm-Wn-CWm" secondAttribute="trailing" constant="20" id="Vd2-C4-pFf"/>
+                <constraint firstItem="CLm-Wn-CWm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="kMZ-Pd-m5V"/>
+                <constraint firstAttribute="bottom" secondItem="CLm-Wn-CWm" secondAttribute="bottom" constant="10" id="nXK-DR-kg3"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="178" y="-159"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="accessoryview_camera" width="64" height="64"/>
+        <image name="accessoryview_textbold" width="64" height="64"/>
+        <image name="accessoryview_textcolor" width="64" height="64"/>
+        <image name="accessoryview_textline" width="64" height="64"/>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -178,6 +178,7 @@
                         <outlet property="moneyTextField" destination="9qc-wN-zri" id="sbx-yu-Flc"/>
                         <outlet property="moneyView" destination="Emv-af-j4P" id="lKc-9L-zF4"/>
                         <outlet property="noteTextView" destination="vsK-YA-yC8" id="4R2-5e-IaY"/>
+                        <outlet property="noteTextViewHeight" destination="T6q-02-PkP" id="POc-yn-vwy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3y-do-u2e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
