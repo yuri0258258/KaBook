@@ -12,7 +12,7 @@
             <connections>
                 <outlet property="photoButton" destination="L8h-bk-dfw" id="3R2-Bs-6vP"/>
                 <outlet property="textBoldButton" destination="slm-oz-BsD" id="nVT-f1-ee3"/>
-                <outlet property="textColor" destination="T2N-WM-tgL" id="en6-I6-gg7"/>
+                <outlet property="textColorButton" destination="T2N-WM-tgL" id="en6-I6-gg7"/>
                 <outlet property="textLineButton" destination="iMm-2E-hFP" id="ILt-ZZ-hYs"/>
             </connections>
         </placeholder>
@@ -25,44 +25,48 @@
                     <rect key="frame" x="20" y="10" width="626" height="144"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8h-bk-dfw">
-                            <rect key="frame" x="0.0" y="52" width="40" height="40"/>
+                            <rect key="frame" x="0.0" y="47" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="L8h-bk-dfw" secondAttribute="height" multiplier="1:1" id="6dp-DC-dH6"/>
-                                <constraint firstAttribute="width" constant="40" id="fhR-ZM-eES"/>
+                                <constraint firstAttribute="width" constant="50" id="fhR-ZM-eES"/>
                             </constraints>
+                            <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                             <state key="normal" image="accessoryview_camera"/>
                             <connections>
                                 <action selector="tappedPhotoButton:" destination="-1" eventType="touchUpInside" id="EaC-Vc-U77"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="slm-oz-BsD">
-                            <rect key="frame" x="195.5" y="52" width="40" height="40"/>
+                            <rect key="frame" x="192" y="47" width="50" height="50"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="40" id="G9w-Ac-cDw"/>
+                                <constraint firstAttribute="width" constant="50" id="G9w-Ac-cDw"/>
                                 <constraint firstAttribute="width" secondItem="slm-oz-BsD" secondAttribute="height" multiplier="1:1" id="UGD-Sq-Y98"/>
                             </constraints>
+                            <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                             <state key="normal" image="accessoryview_textbold"/>
                             <connections>
                                 <action selector="tappedTextBoldButton:" destination="-1" eventType="touchUpInside" id="Pjp-yB-Isp"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMm-2E-hFP">
-                            <rect key="frame" x="390.5" y="52" width="40" height="40"/>
+                            <rect key="frame" x="384" y="47" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="iMm-2E-hFP" secondAttribute="height" multiplier="1:1" id="1xg-SL-Ql4"/>
-                                <constraint firstAttribute="width" constant="40" id="VVH-sO-Vbc"/>
+                                <constraint firstAttribute="width" constant="50" id="VVH-sO-Vbc"/>
                             </constraints>
+                            <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                             <state key="normal" image="accessoryview_textline"/>
                             <connections>
                                 <action selector="tappedTextLineButton:" destination="-1" eventType="touchUpInside" id="DI7-iV-1P1"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2N-WM-tgL">
-                            <rect key="frame" x="586" y="52" width="40" height="40"/>
+                            <rect key="frame" x="576" y="47" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="T2N-WM-tgL" secondAttribute="height" multiplier="1:1" id="XCd-1s-E1z"/>
-                                <constraint firstAttribute="width" constant="40" id="ZTM-pr-4fH"/>
+                                <constraint firstAttribute="width" constant="50" id="ZTM-pr-4fH"/>
                             </constraints>
+                            <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                             <state key="normal" image="accessoryview_textcolor"/>
                             <connections>
                                 <action selector="tappedTextColorButton:" destination="-1" eventType="touchUpInside" id="7PY-jI-eBi"/>
@@ -80,7 +84,7 @@
                 <constraint firstAttribute="bottom" secondItem="CLm-Wn-CWm" secondAttribute="bottom" constant="10" id="nXK-DR-kg3"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="178" y="-159"/>
+            <point key="canvasLocation" x="176.81159420289856" y="-159.375"/>
         </view>
     </objects>
     <resources>

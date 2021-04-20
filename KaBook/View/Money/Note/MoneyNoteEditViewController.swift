@@ -22,8 +22,11 @@ class MoneyNoteEditViewController: UIViewController {
     private lazy var moneyNoteEditAccessoryView: MoneyNoteEditAccessoryView = {
         let view = MoneyNoteEditAccessoryView()
         view.frame = .init(x: 0,y: 0,width: view.frame.width,height: 70)
+        view.moneyNoteEditAccessoryViewDelegate = self
         return view
     }()
+    
+    var picker: UIImagePickerController! = UIImagePickerController()
     
     var noteDate: String?
     
@@ -36,7 +39,7 @@ class MoneyNoteEditViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         //これでスクロールの高さ調節
-        contentViewHeightConstraint.constant = 1000
+        contentViewHeightConstraint.constant = 10000
         //これなかったらスクロールしない
         contentScrollView.contentSize = contentView.frame.size
     }
@@ -49,8 +52,8 @@ class MoneyNoteEditViewController: UIViewController {
     }
     //キーボード閉じる
     @objc func dismissKeyboard() {
-           self.view.endEditing(true)
-       }
+        self.view.endEditing(true)
+    }
     
     private func setUpViews(){
         //navまわり
@@ -152,8 +155,8 @@ class MoneyNoteEditViewController: UIViewController {
     //エラー発生時のアラート処理
     private func errorAlert(error: MoneyNoteEditError){
         let ac = UIAlertController(title: "🚨", message: error.errorDescription, preferredStyle: .alert)
-          ac.addAction(UIAlertAction(title: "OK", style: .default))
-          present(ac,animated: true)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac,animated: true)
         print("エラー発生")
     }
 }
@@ -161,9 +164,9 @@ class MoneyNoteEditViewController: UIViewController {
 extension MoneyNoteEditViewController: UITextFieldDelegate{
     // returnボタン押下で閉じる場合
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-           textField.resignFirstResponder()
-           return true
-       }
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 //MARK: - UITextFieldDelegate
@@ -176,12 +179,105 @@ extension MoneyNoteEditViewController: UITextViewDelegate{
             self.noteTextViewHeight.constant = resizedHeight
             self.noteTextView.frame.size = CGSize(width: self.view.frame.width - 20, height: resizedHeight)
             
-             let addingHeight = resizedHeight - noteTextViewHeight.constant
+            let addingHeight = resizedHeight - noteTextViewHeight.constant
             noteTextViewHeight.constant += addingHeight
             noteTextViewHeight.constant = resizedHeight
         }else{
             noteTextViewHeight.constant = 200
             self.noteTextView.frame.size = CGSize(width: self.view.frame.width - 20, height: resizedHeight)
+        }
+    }
+}
+//MARK: - UIImagePickerControllerDelegate
+extension MoneyNoteEditViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    //imagepicker
+    //MARK:-メモに画像を貼り付ける処理
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            
+            let fullString = NSMutableAttributedString(attributedString: noteTextView.attributedText)
+            let imageWidth = image.size.width
+            //カーソルの位置を取得する
+            var textViewCursor = 0
+            if let selectedRange = noteTextView.selectedTextRange {
+                textViewCursor = noteTextView.offset(from: noteTextView.beginningOfDocument, to: selectedRange.start)
+            }
+            // 画像の幅を調整したい場合paddingなどをframeから引く
+            let padding: CGFloat = 50
+            let scaleFactor = imageWidth / (noteTextView.frame.size.width - padding)
+            let imageAttachment = NSTextAttachment()
+            imageAttachment.image = UIImage(cgImage: image.cgImage!, scale: scaleFactor, orientation: .up)
+            let imageString = NSAttributedString(attachment: imageAttachment)
+//            fullString.append(imageString)
+            fullString.insert(imageString, at: textViewCursor)
+            // TextViewに画像を含んだテキストをセット
+            noteTextView.attributedText = fullString
+        }
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+//MARK:- MoneyNoteEditAccessoryViewDelegate
+extension MoneyNoteEditViewController: MoneyNoteEditAccessoryViewDelegate{
+    func moneyNoteEditAccessoryViewTappedPhotoButton() {
+        //PhotoLibraryから画像を選択
+        picker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        //デリゲートを設定する
+        picker.delegate = self
+        //現れるピッカーNavigationBarの文字色を設定する
+        picker.navigationBar.tintColor = UIColor.white
+        //現れるピッカーNavigationBarの背景色を設定する
+        picker.navigationBar.barTintColor = UIColor.gray
+        //ピッカーを表示する
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func moneyNoteEditAccessoryViewTappedTextBoldButton(){
+        moneyNoteEditAccessoryView.textBoldButton.isSelected = !moneyNoteEditAccessoryView.textBoldButton.isSelected
+        if  moneyNoteEditAccessoryView.textBoldButton.isSelected {
+            let textAttributes: [NSAttributedString.Key : Any] = [
+                      .font : UIFont.boldSystemFont(ofSize: 16)
+                  ]
+            noteTextView.typingAttributes = textAttributes
+            moneyNoteEditAccessoryView.textBoldButton.backgroundColor =  .rgb(red: 55, green: 161, blue: 246)
+        }else{
+            let textAttributes: [NSAttributedString.Key : Any] = [
+                      .font : UIFont.systemFont(ofSize: 14)
+                  ]
+            noteTextView.typingAttributes = textAttributes
+            moneyNoteEditAccessoryView.textBoldButton.backgroundColor = .clear
+        }
+    }
+    func moneyNoteEditAccessoryViewTappedTextLineButton(){
+        moneyNoteEditAccessoryView.textLineButton.isSelected = !moneyNoteEditAccessoryView.textLineButton.isSelected
+        if  moneyNoteEditAccessoryView.textLineButton.isSelected {
+            let textAttributes: [NSAttributedString.Key : Any] = [
+                      .font : UIFont.boldSystemFont(ofSize: 16)
+                  ]
+            noteTextView.typingAttributes = textAttributes
+            moneyNoteEditAccessoryView.textLineButton.backgroundColor =  .rgb(red: 55, green: 161, blue: 246)
+        }else{
+            let textAttributes: [NSAttributedString.Key : Any] = [
+                      .font : UIFont.systemFont(ofSize: 14)
+                  ]
+            noteTextView.typingAttributes = textAttributes
+            moneyNoteEditAccessoryView.textLineButton.backgroundColor = .clear
+        }
+    }
+    func moneyNoteEditAccessoryViewTappedTextColorButton(){
+        moneyNoteEditAccessoryView.textColorButton.isSelected = !moneyNoteEditAccessoryView.textColorButton.isSelected
+        if  moneyNoteEditAccessoryView.textColorButton.isSelected {
+            let textAttributes: [NSAttributedString.Key : Any] = [
+                      .font : UIFont.boldSystemFont(ofSize: 16)
+                  ]
+            noteTextView.typingAttributes = textAttributes
+            moneyNoteEditAccessoryView.textColorButton.backgroundColor =  .rgb(red: 55, green: 161, blue: 246)
+        }else{
+            let textAttributes: [NSAttributedString.Key : Any] = [
+                      .font : UIFont.systemFont(ofSize: 14)
+                  ]
+            noteTextView.typingAttributes = textAttributes
+            moneyNoteEditAccessoryView.textColorButton.backgroundColor = .clear
         }
     }
 }

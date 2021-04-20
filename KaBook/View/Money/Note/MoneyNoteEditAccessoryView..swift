@@ -7,11 +7,20 @@
 
 import UIKit
 
+protocol MoneyNoteEditAccessoryViewDelegate: class{
+    func moneyNoteEditAccessoryViewTappedPhotoButton()
+    func moneyNoteEditAccessoryViewTappedTextBoldButton()
+    func moneyNoteEditAccessoryViewTappedTextLineButton()
+    func moneyNoteEditAccessoryViewTappedTextColorButton()
+}
+
 class MoneyNoteEditAccessoryView: UIView {
     @IBOutlet weak var photoButton: UIButton!
     @IBOutlet weak var textBoldButton: UIButton!
     @IBOutlet weak var textLineButton: UIButton!
-    @IBOutlet weak var textColor: UIButton!
+    @IBOutlet weak var textColorButton: UIButton!
+    
+    weak var moneyNoteEditAccessoryViewDelegate:MoneyNoteEditAccessoryViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,6 +29,10 @@ class MoneyNoteEditAccessoryView: UIView {
     }
 
     private func setUpView() {
+        photoButton.layer.cornerRadius = photoButton.frame.width / 2
+        textBoldButton.layer.cornerRadius = textBoldButton.frame.width / 2
+        textLineButton.layer.cornerRadius = textLineButton.frame.width / 2
+        textColorButton.layer.cornerRadius = textColorButton.frame.width / 2
     }
     
     override var intrinsicContentSize: CGSize{
@@ -40,16 +53,16 @@ class MoneyNoteEditAccessoryView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     @IBAction func tappedPhotoButton(_ sender: Any) {
-        print("tappedPhotoButton")
+        moneyNoteEditAccessoryViewDelegate?.moneyNoteEditAccessoryViewTappedPhotoButton()
     }
     
     @IBAction func tappedTextBoldButton(_ sender: Any) {
-        print("tappedTextBoldButton")
+        moneyNoteEditAccessoryViewDelegate?.moneyNoteEditAccessoryViewTappedTextBoldButton()
     }
     @IBAction func tappedTextLineButton(_ sender: Any) {
-        print("tappedTextLineButton")
+        moneyNoteEditAccessoryViewDelegate?.moneyNoteEditAccessoryViewTappedTextLineButton()
     }
     @IBAction func tappedTextColorButton(_ sender: Any) {
-        print("tappedTextColorButton")
+        moneyNoteEditAccessoryViewDelegate?.moneyNoteEditAccessoryViewTappedTextColorButton()
     }
 }
