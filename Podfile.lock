@@ -212,6 +212,7 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
+  - AMColorPicker (3.0.1)
   - BoringSSL-GRPC (0.0.7):
     - BoringSSL-GRPC/Implementation (= 0.0.7)
     - BoringSSL-GRPC/Interface (= 0.0.7)
@@ -321,6 +322,7 @@ PODS:
     - Realm (= 10.7.2)
 
 DEPENDENCIES:
+  - AMColorPicker
   - CalculateCalendarLogic
   - Charts
   - Firebase/Auth
@@ -334,6 +336,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - abseil
+    - AMColorPicker
     - BoringSSL-GRPC
     - CalculateCalendarLogic
     - Charts
@@ -359,6 +362,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
+  AMColorPicker: 8532f0cb7e0c6e498858368d61089008ee102bd4
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   CalculateCalendarLogic: 84d3aff9456340ff07f7b77242a57b5d2f0ed631
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
@@ -382,6 +386,6 @@ SPEC CHECKSUMS:
   Realm: e523da9ade306c5ae87e85dc09fdef148d3e1cc1
   RealmSwift: 4f6758c3adbdcc87f7b7777107226532a077f61c
 
-PODFILE CHECKSUM: 1998d5ec090d80b0f89e8fa0e5a196c6b6a902f8
+PODFILE CHECKSUM: d4e5ff41bf5943a658a533e709ca26135c754a55
 
 COCOAPODS: 1.10.1

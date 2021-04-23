@@ -15,6 +15,7 @@ target 'KaBook' do
   pod 'RealmSwift'
   pod 'FSCalendar'
   pod 'CalculateCalendarLogic'
+  pod 'AMColorPicker'
 
   target 'KaBookTests' do
     inherit! :search_paths

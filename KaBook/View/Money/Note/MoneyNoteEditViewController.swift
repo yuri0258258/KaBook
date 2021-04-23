@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import AMColorPicker
 
 class MoneyNoteEditViewController: UIViewController {
     @IBOutlet weak var contentScrollView: UIScrollView!
@@ -18,7 +19,7 @@ class MoneyNoteEditViewController: UIViewController {
     @IBOutlet weak var contentViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var moneyPlusButton: UIButton!
     @IBOutlet weak var moneyMinusButton: UIButton!
-    
+
     private lazy var moneyNoteEditAccessoryView: MoneyNoteEditAccessoryView = {
         let view = MoneyNoteEditAccessoryView()
         view.frame = .init(x: 0,y: 0,width: view.frame.width,height: 70)
@@ -78,6 +79,7 @@ class MoneyNoteEditViewController: UIViewController {
         //noteTextView
         noteTextView.delegate = self
         noteTextView.inputAccessoryView = moneyNoteEditAccessoryView
+        noteTextView.keyboardDismissMode = .interactive
     }
     
     @IBAction func tappedPlusButton(_ sender: Any) {
@@ -219,6 +221,8 @@ extension MoneyNoteEditViewController: UIImagePickerControllerDelegate,UINavigat
 
 //MARK:- MoneyNoteEditAccessoryViewDelegate
 extension MoneyNoteEditViewController: MoneyNoteEditAccessoryViewDelegate{
+    
+    //写真の貼り付け
     func moneyNoteEditAccessoryViewTappedPhotoButton() {
         //PhotoLibraryから画像を選択
         picker.sourceType = UIImagePickerController.SourceType.photoLibrary
@@ -232,6 +236,7 @@ extension MoneyNoteEditViewController: MoneyNoteEditAccessoryViewDelegate{
         present(picker, animated: true, completion: nil)
     }
     
+    //テキスト太字ボタン
     func moneyNoteEditAccessoryViewTappedTextBoldButton(){
         moneyNoteEditAccessoryView.textBoldButton.isSelected = !moneyNoteEditAccessoryView.textBoldButton.isSelected
         if  moneyNoteEditAccessoryView.textBoldButton.isSelected {
@@ -240,6 +245,9 @@ extension MoneyNoteEditViewController: MoneyNoteEditAccessoryViewDelegate{
                   ]
             noteTextView.typingAttributes = textAttributes
             moneyNoteEditAccessoryView.textBoldButton.backgroundColor =  .rgb(red: 55, green: 161, blue: 246)
+            
+            accessoryViewButtonFalse(button: moneyNoteEditAccessoryView.textLineButton)
+            accessoryViewButtonFalse(button: moneyNoteEditAccessoryView.textColorButton)
         }else{
             let textAttributes: [NSAttributedString.Key : Any] = [
                       .font : UIFont.systemFont(ofSize: 14)
@@ -248,14 +256,20 @@ extension MoneyNoteEditViewController: MoneyNoteEditAccessoryViewDelegate{
             moneyNoteEditAccessoryView.textBoldButton.backgroundColor = .clear
         }
     }
+    
+    //テキスト下線ボタン
     func moneyNoteEditAccessoryViewTappedTextLineButton(){
         moneyNoteEditAccessoryView.textLineButton.isSelected = !moneyNoteEditAccessoryView.textLineButton.isSelected
         if  moneyNoteEditAccessoryView.textLineButton.isSelected {
             let textAttributes: [NSAttributedString.Key : Any] = [
-                      .font : UIFont.boldSystemFont(ofSize: 16)
+                      .font : UIFont.systemFont(ofSize: 14),
+                      .underlineStyle: NSUnderlineStyle.single.rawValue,
                   ]
             noteTextView.typingAttributes = textAttributes
             moneyNoteEditAccessoryView.textLineButton.backgroundColor =  .rgb(red: 55, green: 161, blue: 246)
+            
+            accessoryViewButtonFalse(button: moneyNoteEditAccessoryView.textBoldButton)
+            accessoryViewButtonFalse(button: moneyNoteEditAccessoryView.textColorButton)
         }else{
             let textAttributes: [NSAttributedString.Key : Any] = [
                       .font : UIFont.systemFont(ofSize: 14)
@@ -264,20 +278,42 @@ extension MoneyNoteEditViewController: MoneyNoteEditAccessoryViewDelegate{
             moneyNoteEditAccessoryView.textLineButton.backgroundColor = .clear
         }
     }
+    
+    //テキスト色変え
     func moneyNoteEditAccessoryViewTappedTextColorButton(){
         moneyNoteEditAccessoryView.textColorButton.isSelected = !moneyNoteEditAccessoryView.textColorButton.isSelected
         if  moneyNoteEditAccessoryView.textColorButton.isSelected {
-            let textAttributes: [NSAttributedString.Key : Any] = [
-                      .font : UIFont.boldSystemFont(ofSize: 16)
-                  ]
-            noteTextView.typingAttributes = textAttributes
+            let colorPickerViewController = AMColorPickerViewController()
+            colorPickerViewController.delegate = self
+            present(colorPickerViewController, animated: true, completion: nil)
+         
             moneyNoteEditAccessoryView.textColorButton.backgroundColor =  .rgb(red: 55, green: 161, blue: 246)
+            accessoryViewButtonFalse(button: moneyNoteEditAccessoryView.textBoldButton)
+            accessoryViewButtonFalse(button: moneyNoteEditAccessoryView.textLineButton)
         }else{
             let textAttributes: [NSAttributedString.Key : Any] = [
-                      .font : UIFont.systemFont(ofSize: 14)
+                      .font : UIFont.systemFont(ofSize: 14),
+                      .foregroundColor : UIColor.rgb(red: 0, green: 0, blue: 0)
                   ]
             noteTextView.typingAttributes = textAttributes
             moneyNoteEditAccessoryView.textColorButton.backgroundColor = .clear
         }
+    }
+    
+    private func accessoryViewButtonFalse(button: UIButton){
+        button.isSelected = false
+        button.backgroundColor =  .clear
+    }
+}
+
+//MARK:- MoneyNoteEditAccessoryViewDelegate
+extension MoneyNoteEditViewController: AMColorPickerDelegate{
+    func colorPicker(_ colorPicker: AMColorPicker, didSelect color: UIColor) {
+        let textAttributes: [NSAttributedString.Key : Any] = [
+                   .font : UIFont.systemFont(ofSize: 14),
+                  .foregroundColor : color
+              ]
+        noteTextView.typingAttributes = textAttributes
+        moneyNoteEditAccessoryView.textColorButton.backgroundColor =  .rgb(red: 55, green: 161, blue: 246)
     }
 }
