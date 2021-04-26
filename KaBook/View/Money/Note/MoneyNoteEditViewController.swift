@@ -118,9 +118,19 @@ class MoneyNoteEditViewController: UIViewController {
         let realm = try! Realm()
         try! realm.write {
             //日付表示の内容とスケジュール入力の内容が書き込まれる。
-            let calendarRealm = [CalendarRealm(value: ["date": noteDate, "note": notetext,"money": money])]
-            realm.add(calendarRealm)
-            print("データ書き込み中")
+            if let attributedText = noteTextView.attributedText {
+                do {
+                    let htmlData = try attributedText.data(from: .init(location: 0, length: attributedText.length),documentAttributes: [.documentType: NSAttributedString.DocumentType.html])
+                    let htmlString = String(data: htmlData, encoding: .utf8) ?? ""
+                    let calendarRealm = [CalendarRealm(value: ["date": noteDate, "note": notetext,"money": money,"textdata":htmlData])]
+                    realm.add(calendarRealm)
+                    print("データ書き込み中")
+                    print(htmlString)
+                } catch {
+                    print(error)
+                }
+            }
+         
         }
         print("データ書き込み完了")
         
@@ -267,7 +277,7 @@ extension MoneyNoteEditViewController: MoneyNoteEditAccessoryViewDelegate{
                   ]
             noteTextView.typingAttributes = textAttributes
             moneyNoteEditAccessoryView.textLineButton.backgroundColor =  .rgb(red: 55, green: 161, blue: 246)
-            
+
             accessoryViewButtonFalse(button: moneyNoteEditAccessoryView.textBoldButton)
             accessoryViewButtonFalse(button: moneyNoteEditAccessoryView.textColorButton)
         }else{

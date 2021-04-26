@@ -22,7 +22,7 @@ class MoneyTopViewController: UIViewController {
     
     var moneyTopNoteTableViewCellTextViewText = ""
     
-    
+    var htmldata:NSAttributedString?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,7 +129,7 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
     
     //カレンダー処理(スケジュール表示処理)
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let tmpDate = Calendar(identifier: .gregorian)
         let year = tmpDate.component(.year, from: date)
         let month = tmpDate.component(.month, from: date)
@@ -150,6 +150,9 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         for data in result {
             if data.date == date {
                 moneyTopNoteTableViewCellTextViewText = data.note
+                let html = String(data: data.textdata, encoding: .utf8)
+                print(html)
+                htmldata = html?.htmlToAttributedString
             }
         }
         moneyTopNoteTableView.reloadData()
@@ -188,8 +191,11 @@ extension MoneyTopViewController: UITableViewDelegate,UITableViewDataSource{
             cell.moneyTopNoteTableViewCellEditButton.isEnabled = false
         }
        
-        cell.moneyTopNoteTableViewCellDateLabel.text = moneyTopNoteTableViewCellDateLabelText
-        cell.moneyTopNoteTableViewCellTextView.text = moneyTopNoteTableViewCellTextViewText
+//        cell.moneyTopNoteTableViewCellDateLabel.text = moneyTopNoteTableViewCellDateLabelText
+//        cell.moneyTopNoteTableViewCellTextView.text = moneyTopNoteTableViewCellTextViewText
+//        print(htmldata)
+        cell.moneyTopNoteTableViewCellTextView.attributedText = htmldata
+        
         //ノート内容の高さだけcellの高さを高くする
         let moneyTopNoteTableViewCellTextViewHeight:CGFloat = 33
         cell.moneyTopNoteTableViewCellTextView.sizeToFit()
@@ -216,5 +222,19 @@ extension MoneyTopViewController: MoneyTopNoteTableViewCellDelegate {
     
     func moneyTopNoteTableViewCelltappedDetailButton() {
       print("収支ノート画面に遷移。準備中。")
+    }
+}
+
+extension String {
+    var htmlToAttributedString: NSAttributedString? {
+        guard let data = data(using: .utf8) else { return nil }
+        do {
+            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            return nil
+        }
+    }
+    var htmlToString: String {
+        return htmlToAttributedString?.string ?? ""
     }
 }
