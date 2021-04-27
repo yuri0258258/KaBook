@@ -22,7 +22,7 @@ class MoneyTopViewController: UIViewController {
     
     var moneyTopNoteTableViewCellTextViewText = ""
     
-    var htmldata:NSAttributedString?
+    var noteData:NSAttributedString?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,10 +149,7 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         result = result.filter("date = '\(date)'")
         for data in result {
             if data.date == date {
-                moneyTopNoteTableViewCellTextViewText = data.note
-                let html = String(data: data.textdata, encoding: .utf8)
-                print(html)
-                htmldata = html?.htmlToAttributedString
+                noteData = data.notedata?.toAttributedString()
             }
         }
         moneyTopNoteTableView.reloadData()
@@ -194,7 +191,7 @@ extension MoneyTopViewController: UITableViewDelegate,UITableViewDataSource{
 //        cell.moneyTopNoteTableViewCellDateLabel.text = moneyTopNoteTableViewCellDateLabelText
 //        cell.moneyTopNoteTableViewCellTextView.text = moneyTopNoteTableViewCellTextViewText
 //        print(htmldata)
-        cell.moneyTopNoteTableViewCellTextView.attributedText = htmldata
+        cell.moneyTopNoteTableViewCellTextView.attributedText = noteData
         
         //ノート内容の高さだけcellの高さを高くする
         let moneyTopNoteTableViewCellTextViewHeight:CGFloat = 33
@@ -236,5 +233,19 @@ extension String {
     }
     var htmlToString: String {
         return htmlToAttributedString?.string ?? ""
+    }
+}
+
+extension NSData {
+    func toAttributedString() -> NSAttributedString? {
+        let data = Data(referencing: self)
+        let options : [NSAttributedString.DocumentReadingOptionKey: Any] = [
+            .documentType: NSAttributedString.DocumentType.rtfd,
+            .characterEncoding: String.Encoding.utf8
+        ]
+
+        return try? NSAttributedString(data: data,
+                                       options: options,
+                                       documentAttributes: nil)
     }
 }

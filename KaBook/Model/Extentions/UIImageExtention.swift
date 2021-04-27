@@ -22,4 +22,21 @@ extension UIImage{
         
         return resizedImage
     }
+    
+    func aspectWidthResize(image: UIImage, width: Double) -> UIImage {
+            
+        // オリジナル画像のサイズからアスペクト比を計算
+        let aspectScale = image.size.height / image.size.width
+        
+        // widthからアスペクト比を元にリサイズ後のサイズを取得
+        let resizedSize = CGSize(width: width, height: width * Double(aspectScale))
+        
+        // リサイズ後のUIImageを生成して返却
+        UIGraphicsBeginImageContext(resizedSize)
+        image.draw(in: CGRect(x: 0, y: 0, width: resizedSize.width, height: resizedSize.height))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return resizedImage!
+    }
 }

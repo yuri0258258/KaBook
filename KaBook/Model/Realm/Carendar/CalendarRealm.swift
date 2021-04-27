@@ -10,7 +10,6 @@ import RealmSwift
 
 class CalendarRealm: Object {
     @objc dynamic var date: String = ""
-    @objc dynamic var note: String = ""
     @objc dynamic var money: String = "0"
-    @objc dynamic var textdata = Data()
+    @objc dynamic var notedata:NSData?
 }

@@ -78,6 +78,7 @@ class MoneyNoteEditViewController: UIViewController {
         moneyTextField.delegate = self
         //noteTextView
         noteTextView.delegate = self
+        noteTextView.textContainerInset = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
         noteTextView.inputAccessoryView = moneyNoteEditAccessoryView
         noteTextView.keyboardDismissMode = .interactive
     }
@@ -107,8 +108,12 @@ class MoneyNoteEditViewController: UIViewController {
             errorAlert(error: .moneyTextNotIntError)
             return
         }
+    
+        guard  let noteData = noteTextView.attributedText.toNSData() else {
+            return
+        }
         
-        guard let notetext = noteTextView.text else {
+        guard let noteDate = noteDate else {
             return
         }
         
@@ -118,19 +123,9 @@ class MoneyNoteEditViewController: UIViewController {
         let realm = try! Realm()
         try! realm.write {
             //日付表示の内容とスケジュール入力の内容が書き込まれる。
-            if let attributedText = noteTextView.attributedText {
-                do {
-                    let htmlData = try attributedText.data(from: .init(location: 0, length: attributedText.length),documentAttributes: [.documentType: NSAttributedString.DocumentType.html])
-                    let htmlString = String(data: htmlData, encoding: .utf8) ?? ""
-                    let calendarRealm = [CalendarRealm(value: ["date": noteDate, "note": notetext,"money": money,"textdata":htmlData])]
-                    realm.add(calendarRealm)
-                    print("データ書き込み中")
-                    print(htmlString)
-                } catch {
-                    print(error)
-                }
-            }
-         
+            let calendarRealm = [CalendarRealm(value: ["date": noteDate,"money": money,"notedata":noteData])]
+            realm.add(calendarRealm)
+            print("データ書き込み中")
         }
         print("データ書き込み完了")
         
@@ -208,19 +203,25 @@ extension MoneyNoteEditViewController: UIImagePickerControllerDelegate,UINavigat
         if let image = info[.originalImage] as? UIImage {
             
             let fullString = NSMutableAttributedString(attributedString: noteTextView.attributedText)
-            let imageWidth = image.size.width
             //カーソルの位置を取得する
             var textViewCursor = 0
             if let selectedRange = noteTextView.selectedTextRange {
                 textViewCursor = noteTextView.offset(from: noteTextView.beginningOfDocument, to: selectedRange.start)
             }
-            // 画像の幅を調整したい場合paddingなどをframeから引く
-            let padding: CGFloat = 50
-            let scaleFactor = imageWidth / (noteTextView.frame.size.width - padding)
+            // ScreenSize
+            let screenWidth = self.view.bounds.width
+            //画像サイズ
+            var imageWidth = image.size.width
+
+            //画像の横幅調整
+            if imageWidth > noteTextView.frame.size.width {
+                imageWidth = screenWidth - 70
+            }
+     
+            let image = UIImage(cgImage: image.cgImage!).aspectWidthResize(image: image, width: Double(imageWidth))
             let imageAttachment = NSTextAttachment()
-            imageAttachment.image = UIImage(cgImage: image.cgImage!, scale: scaleFactor, orientation: .up)
+            imageAttachment.image = image
             let imageString = NSAttributedString(attachment: imageAttachment)
-//            fullString.append(imageString)
             fullString.insert(imageString, at: textViewCursor)
             // TextViewに画像を含んだテキストをセット
             noteTextView.attributedText = fullString
@@ -325,5 +326,22 @@ extension MoneyNoteEditViewController: AMColorPickerDelegate{
               ]
         noteTextView.typingAttributes = textAttributes
         moneyNoteEditAccessoryView.textColorButton.backgroundColor =  .rgb(red: 55, green: 161, blue: 246)
+    }
+}
+
+
+extension NSAttributedString {
+    func toNSData() -> NSData? {
+        let options : [NSAttributedString.DocumentAttributeKey: Any] = [
+            .documentType: NSAttributedString.DocumentType.rtfd,
+            .characterEncoding: String.Encoding.utf8
+        ]
+
+        let range = NSRange(location: 0, length: length)
+        guard let data = try? data(from: range, documentAttributes: options) else {
+            return nil
+        }
+
+        return NSData(data: data)
     }
 }
