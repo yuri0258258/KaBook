@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol MoneyTopNoteTableViewCellDelegate: class{
+protocol MoneyTopNoteTableViewCellDelegate: AnyObject{
     func moneyTopNoteTableViewCelltappedDetailButton()
     func moneyTopNoteTableViewCelltappedEditButton()
 }
@@ -19,7 +19,7 @@ class MoneyTopNoteTableViewCell: UITableViewCell {
     @IBOutlet weak var moneyTopNoteTableViewCellDetailButton: UIButton!
     @IBOutlet weak var moneyTopNoteTableViewCellEditButton: UIButton!
     
-   weak var moneyTopNoteTableViewCellDelegate:MoneyTopNoteTableViewCellDelegate?
+     weak var moneyTopNoteTableViewCellDelegate:MoneyTopNoteTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

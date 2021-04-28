@@ -6,6 +6,7 @@ import UIKit
 import FSCalendar
 import CalculateCalendarLogic
 import RealmSwift
+import PKHUD
 
 class MoneyTopViewController: UIViewController {
     @IBOutlet weak var carendarView: FSCalendar!
@@ -35,6 +36,7 @@ class MoneyTopViewController: UIViewController {
         moneyTopNoteTableView.tableFooterView = UIView()
         moneyTopNoteTableView.register(UINib(nibName: "MoneyTopNoteTableViewCell", bundle: nil),forCellReuseIdentifier: cellId)
     }
+    
     
     private func setUpViews(){
         //navまわり
@@ -128,7 +130,7 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         return nil
     }
     
-    //カレンダー処理(スケジュール表示処理)
+    //カレンダー処理(ノート表示処理)
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let tmpDate = Calendar(identifier: .gregorian)
         let year = tmpDate.component(.year, from: date)
@@ -142,6 +144,12 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         moneyTopNoteTableViewCellDateLabelText = "\(m)/\(d)"
         //クリックされた日付にノートがない場合のノート内容
         moneyTopNoteTableViewCellTextViewText = "書き込みがありません。"
+        
+        fetchRealmMoneyTopNoteTableView(date: date)
+    }
+    
+    //カレンダーとノートの更新
+    func fetchRealmMoneyTopNoteTableView(date: String){
         //スケジュール取得
         let realm = try! Realm()
         var result = realm.objects(CalendarRealm.self)
@@ -187,10 +195,10 @@ extension MoneyTopViewController: UITableViewDelegate,UITableViewDataSource{
             cell.moneyTopNoteTableViewCellEditButton.isHidden = true
             cell.moneyTopNoteTableViewCellEditButton.isEnabled = false
         }
-       
-//        cell.moneyTopNoteTableViewCellDateLabel.text = moneyTopNoteTableViewCellDateLabelText
-//        cell.moneyTopNoteTableViewCellTextView.text = moneyTopNoteTableViewCellTextViewText
-//        print(htmldata)
+        
+        //        cell.moneyTopNoteTableViewCellDateLabel.text = moneyTopNoteTableViewCellDateLabelText
+        //        cell.moneyTopNoteTableViewCellTextView.text = moneyTopNoteTableViewCellTextViewText
+        //        print(htmldata)
         cell.moneyTopNoteTableViewCellTextView.attributedText = noteData
         
         //ノート内容の高さだけcellの高さを高くする
@@ -208,44 +216,30 @@ extension MoneyTopViewController: UITableViewDelegate,UITableViewDataSource{
 
 //MARK: - MoneyTopNoteTableViewCellDelegate
 extension MoneyTopViewController: MoneyTopNoteTableViewCellDelegate {
+    
     func moneyTopNoteTableViewCelltappedEditButton() {
         let storyboard = UIStoryboard(name: "MoneyNoteEdit", bundle: nil)
         let moneyNoteEditViewController = storyboard.instantiateViewController(withIdentifier: "MoneyNoteEditViewController") as! MoneyNoteEditViewController
         moneyNoteEditViewController.noteDate = carendarDate
+        moneyNoteEditViewController.moneyTopNoteTableViewReloadDelegate = self
         let nav = UINavigationController(rootViewController: moneyNoteEditViewController)
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
     }
     
     func moneyTopNoteTableViewCelltappedDetailButton() {
-      print("収支ノート画面に遷移。準備中。")
+        print("収支ノート画面に遷移。準備中。")
     }
 }
 
-extension String {
-    var htmlToAttributedString: NSAttributedString? {
-        guard let data = data(using: .utf8) else { return nil }
-        do {
-            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
-        } catch {
-            return nil
+//MARK:- MoneyTopNoteTableViewReloadDelegate
+extension MoneyTopViewController: MoneyTopNoteTableViewReloadDelegate{
+    func moneyTopNoteTableViewReload() {
+        moneyTopNoteTableView.performBatchUpdates({
+            guard let date = carendarDate else {return}
+            HUD.show(.progress)
+            self.fetchRealmMoneyTopNoteTableView(date: date)
+        }) { (finished) in
+            HUD.hide()
         }
-    }
-    var htmlToString: String {
-        return htmlToAttributedString?.string ?? ""
-    }
-}
-
-extension NSData {
-    func toAttributedString() -> NSAttributedString? {
-        let data = Data(referencing: self)
-        let options : [NSAttributedString.DocumentReadingOptionKey: Any] = [
-            .documentType: NSAttributedString.DocumentType.rtfd,
-            .characterEncoding: String.Encoding.utf8
-        ]
-
-        return try? NSAttributedString(data: data,
-                                       options: options,
-                                       documentAttributes: nil)
-    }
-}
+    }}

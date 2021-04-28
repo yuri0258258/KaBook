@@ -9,6 +9,11 @@ import UIKit
 import RealmSwift
 import AMColorPicker
 
+//moneyTopNoteTableView更新プロトコル
+protocol MoneyTopNoteTableViewReloadDelegate: AnyObject {
+    func moneyTopNoteTableViewReload()
+}
+
 class MoneyNoteEditViewController: UIViewController {
     @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
@@ -19,6 +24,8 @@ class MoneyNoteEditViewController: UIViewController {
     @IBOutlet weak var contentViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var moneyPlusButton: UIButton!
     @IBOutlet weak var moneyMinusButton: UIButton!
+    
+    weak var moneyTopNoteTableViewReloadDelegate: MoneyTopNoteTableViewReloadDelegate?
 
     private lazy var moneyNoteEditAccessoryView: MoneyNoteEditAccessoryView = {
         let view = MoneyNoteEditAccessoryView()
@@ -129,14 +136,11 @@ class MoneyNoteEditViewController: UIViewController {
         }
         print("データ書き込み完了")
         
-        //前のページに戻る
-        let storyboard = UIStoryboard(name: "MoneyTop", bundle: nil)
-        let moneyTopViewController = storyboard.instantiateViewController(withIdentifier: "MoneyTopViewController") as! MoneyTopViewController
-        let nav = UINavigationController(rootViewController: moneyTopViewController)
-        nav.modalPresentationStyle = .fullScreen
-        self.present(nav, animated: true) {
-            moneyTopViewController.moneyTopNoteTableView.reloadData()
+        //前のページに戻るのとデータの更新
+        self.dismiss(animated: true) {
+            self.moneyTopNoteTableViewReloadDelegate?.moneyTopNoteTableViewReload()
         }
+    
     }
     
     //moneyTextFieldの値のチェックと変換
@@ -165,6 +169,12 @@ class MoneyNoteEditViewController: UIViewController {
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac,animated: true)
         print("エラー発生")
+    }
+    
+    //ボタンの選択の論理値の変更
+    private func accessoryViewButtonFalse(button: UIButton){
+        button.isSelected = false
+        button.backgroundColor =  .clear
     }
 }
 //MARK: - UITextFieldDelegate
@@ -197,8 +207,8 @@ extension MoneyNoteEditViewController: UITextViewDelegate{
 }
 //MARK: - UIImagePickerControllerDelegate
 extension MoneyNoteEditViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-    //imagepicker
-    //MARK:-メモに画像を貼り付ける処理
+    
+    //メモに画像を貼り付ける処理
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             
@@ -233,7 +243,7 @@ extension MoneyNoteEditViewController: UIImagePickerControllerDelegate,UINavigat
 //MARK:- MoneyNoteEditAccessoryViewDelegate
 extension MoneyNoteEditViewController: MoneyNoteEditAccessoryViewDelegate{
     
-    //写真の貼り付け
+    //写真貼り付けボタン
     func moneyNoteEditAccessoryViewTappedPhotoButton() {
         //PhotoLibraryから画像を選択
         picker.sourceType = UIImagePickerController.SourceType.photoLibrary
@@ -290,7 +300,7 @@ extension MoneyNoteEditViewController: MoneyNoteEditAccessoryViewDelegate{
         }
     }
     
-    //テキスト色変え
+    //テキスト色変えボタン
     func moneyNoteEditAccessoryViewTappedTextColorButton(){
         moneyNoteEditAccessoryView.textColorButton.isSelected = !moneyNoteEditAccessoryView.textColorButton.isSelected
         if  moneyNoteEditAccessoryView.textColorButton.isSelected {
@@ -310,11 +320,6 @@ extension MoneyNoteEditViewController: MoneyNoteEditAccessoryViewDelegate{
             moneyNoteEditAccessoryView.textColorButton.backgroundColor = .clear
         }
     }
-    
-    private func accessoryViewButtonFalse(button: UIButton){
-        button.isSelected = false
-        button.backgroundColor =  .clear
-    }
 }
 
 //MARK:- MoneyNoteEditAccessoryViewDelegate
@@ -326,22 +331,5 @@ extension MoneyNoteEditViewController: AMColorPickerDelegate{
               ]
         noteTextView.typingAttributes = textAttributes
         moneyNoteEditAccessoryView.textColorButton.backgroundColor =  .rgb(red: 55, green: 161, blue: 246)
-    }
-}
-
-
-extension NSAttributedString {
-    func toNSData() -> NSData? {
-        let options : [NSAttributedString.DocumentAttributeKey: Any] = [
-            .documentType: NSAttributedString.DocumentType.rtfd,
-            .characterEncoding: String.Encoding.utf8
-        ]
-
-        let range = NSRange(location: 0, length: length)
-        guard let data = try? data(from: range, documentAttributes: options) else {
-            return nil
-        }
-
-        return NSData(data: data)
     }
 }
