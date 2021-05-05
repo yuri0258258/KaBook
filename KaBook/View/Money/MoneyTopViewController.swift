@@ -21,20 +21,12 @@ class MoneyTopViewController: UIViewController {
     
     var moneyTopNoteTableViewCellDateLabelText = ""
     
-    var moneyTopNoteTableViewCellTextViewText = ""
-    
     var noteData:NSAttributedString?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews()
         carendarViewSetUp()
-        
-        //tableview
-        moneyTopNoteTableView.delegate = self
-        moneyTopNoteTableView.dataSource = self
-        moneyTopNoteTableView.tableFooterView = UIView()
-        moneyTopNoteTableView.register(UINib(nibName: "MoneyTopNoteTableViewCell", bundle: nil),forCellReuseIdentifier: cellId)
     }
     
     
@@ -45,6 +37,12 @@ class MoneyTopViewController: UIViewController {
             navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white,.font: UIFont(name: "HiraginoSans-W3", size: 24) as Any]
             navigationBar.navigationBarGradientBackGround(navigationBar: navigationBar, safeAreaTop: self.additionalSafeAreaInsets.top)
         }
+        
+        //tableview
+        moneyTopNoteTableView.delegate = self
+        moneyTopNoteTableView.dataSource = self
+        moneyTopNoteTableView.tableFooterView = UIView()
+        moneyTopNoteTableView.register(UINib(nibName: "MoneyTopNoteTableViewCell", bundle: nil),forCellReuseIdentifier: cellId)
     }
     
     //カレンダーのレイアウト
@@ -143,8 +141,11 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         //クリックしたら、日付が表示される。
         moneyTopNoteTableViewCellDateLabelText = "\(m)/\(d)"
         //クリックされた日付にノートがない場合のノート内容
-        moneyTopNoteTableViewCellTextViewText = "書き込みがありません。"
+        let attributedString: [NSAttributedString.Key : Any] = [
+            .font : UIFont.systemFont(ofSize: 14)
+        ]
         
+        noteData = NSAttributedString(string: "書き込みがありません。", attributes: attributedString)
         fetchRealmMoneyTopNoteTableView(date: date)
     }
     
@@ -178,13 +179,13 @@ extension MoneyTopViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = moneyTopNoteTableView.dequeueReusableCell(withIdentifier: cellId,for:indexPath) as! MoneyTopNoteTableViewCell
         //最初の読み込み時には表示しない
-        if moneyTopNoteTableViewCellDateLabelText == "" {
+        if noteData == nil {
             cell.MoneyTopNoteTableViewCellContentView.isHidden = true
         }else{
             cell.MoneyTopNoteTableViewCellContentView.isHidden = false
         }
         //ノートの書き込みがない場合のボタンテキスト変更
-        if moneyTopNoteTableViewCellTextViewText == "書き込みがありません。" {
+        if noteData?.string == "書き込みがありません。" {
             cell.moneyTopNoteTableViewCellDetailButton.isHidden = true
             cell.moneyTopNoteTableViewCellDetailButton.isEnabled = false
             cell.moneyTopNoteTableViewCellEditButton.isHidden = false
@@ -196,9 +197,7 @@ extension MoneyTopViewController: UITableViewDelegate,UITableViewDataSource{
             cell.moneyTopNoteTableViewCellEditButton.isEnabled = false
         }
         
-        //        cell.moneyTopNoteTableViewCellDateLabel.text = moneyTopNoteTableViewCellDateLabelText
-        //        cell.moneyTopNoteTableViewCellTextView.text = moneyTopNoteTableViewCellTextViewText
-        //        print(htmldata)
+        cell.moneyTopNoteTableViewCellDateLabel.text = moneyTopNoteTableViewCellDateLabelText
         cell.moneyTopNoteTableViewCellTextView.attributedText = noteData
         
         //ノート内容の高さだけcellの高さを高くする

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol MoneyNoteEditAccessoryViewDelegate: class{
+protocol MoneyNoteEditAccessoryViewDelegate: AnyObject{
     func moneyNoteEditAccessoryViewTappedPhotoButton()
     func moneyNoteEditAccessoryViewTappedTextBoldButton()
     func moneyNoteEditAccessoryViewTappedTextLineButton()

@@ -25,8 +25,12 @@ class MoneyNoteEditViewController: UIViewController {
     @IBOutlet weak var moneyPlusButton: UIButton!
     @IBOutlet weak var moneyMinusButton: UIButton!
     
+    var noteDate: String?
+    
     weak var moneyTopNoteTableViewReloadDelegate: MoneyTopNoteTableViewReloadDelegate?
-
+    
+    var picker: UIImagePickerController! = UIImagePickerController()
+    
     private lazy var moneyNoteEditAccessoryView: MoneyNoteEditAccessoryView = {
         let view = MoneyNoteEditAccessoryView()
         view.frame = .init(x: 0,y: 0,width: view.frame.width,height: 70)
@@ -34,22 +38,11 @@ class MoneyNoteEditViewController: UIViewController {
         return view
     }()
     
-    var picker: UIImagePickerController! = UIImagePickerController()
-    
-    var noteDate: String?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews()
+        setUpNotification()
         tappedView()
-    }
-    
-    
-    override func viewDidLayoutSubviews() {
-        //これでスクロールの高さ調節
-        contentViewHeightConstraint.constant = 10000
-        //これなかったらスクロールしない
-        contentScrollView.contentSize = contentView.frame.size
     }
     
     //他画面がタップされた時にdismissKeyboard()が呼ばれる関数
@@ -58,6 +51,7 @@ class MoneyNoteEditViewController: UIViewController {
         tapGR.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGR)
     }
+    
     //キーボード閉じる
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
@@ -86,8 +80,38 @@ class MoneyNoteEditViewController: UIViewController {
         //noteTextView
         noteTextView.delegate = self
         noteTextView.textContainerInset = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
+        noteTextView.layer.cornerRadius = 5
         noteTextView.inputAccessoryView = moneyNoteEditAccessoryView
         noteTextView.keyboardDismissMode = .interactive
+    }
+    
+    //キーボードの通知処理
+    private func setUpNotification(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    //キーボードの出現処理
+    @objc private func keyboardWillShow(notification: NSNotification){
+        print("出現")
+        
+        guard let userInfo = notification.userInfo else {
+            return
+        }
+        
+        if let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue {
+            print("frameの大きさ\(keyboardFrame)")
+            
+            let keyboardFrameHeight = keyboardFrame.height
+            let contentInsent = UIEdgeInsets(top: 200, left: 0, bottom: keyboardFrameHeight, right: 0)
+            
+            self.contentScrollView.contentInset = contentInsent
+        }
+    }
+    
+    //キーボードが非表示になった時の処理
+    @objc private func keyboardWillHide(){
+        print("隠れる")
     }
     
     @IBAction func tappedPlusButton(_ sender: Any) {
@@ -115,7 +139,7 @@ class MoneyNoteEditViewController: UIViewController {
             errorAlert(error: .moneyTextNotIntError)
             return
         }
-    
+        
         guard  let noteData = noteTextView.attributedText.toNSData() else {
             return
         }
@@ -140,7 +164,7 @@ class MoneyNoteEditViewController: UIViewController {
         self.dismiss(animated: true) {
             self.moneyTopNoteTableViewReloadDelegate?.moneyTopNoteTableViewReload()
         }
-    
+        
     }
     
     //moneyTextFieldの値のチェックと変換
@@ -189,20 +213,27 @@ extension MoneyNoteEditViewController: UITextFieldDelegate{
 //MARK: - UITextFieldDelegate
 extension MoneyNoteEditViewController: UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
-        self.noteTextView.sizeToFit()
-        let resizedHeight = self.noteTextView.frame.size.height
+        noteTextView.sizeToFit()
+        let resizedHeight = noteTextView.frame.size.height
+        let defaultNoteTextViewHeightConstant:CGFloat = 200
         
         if resizedHeight > noteTextViewHeight.constant {
-            self.noteTextViewHeight.constant = resizedHeight
-            self.noteTextView.frame.size = CGSize(width: self.view.frame.width - 20, height: resizedHeight)
-            
-            let addingHeight = resizedHeight - noteTextViewHeight.constant
-            noteTextViewHeight.constant += addingHeight
             noteTextViewHeight.constant = resizedHeight
+            noteTextView.frame.size = CGSize(width: view.frame.width - 20, height: resizedHeight)
         }else{
-            noteTextViewHeight.constant = 200
-            self.noteTextView.frame.size = CGSize(width: self.view.frame.width - 20, height: resizedHeight)
+            noteTextViewHeight.constant = defaultNoteTextViewHeightConstant
+            noteTextView.frame.size = CGSize(width: view.frame.width - 20, height: resizedHeight)
         }
+        
+        //画面のスクロールと可変画面
+        if 350 < noteTextView.frame.size.height {
+            let noteTextViewAddingHeight = noteTextView.frame.size.height - defaultNoteTextViewHeightConstant
+            let contentHeight = (noteTextViewAddingHeight + view.frame.height) - (moneyView.frame.height + 50)
+            
+            contentView.frame.size.height = contentHeight
+            contentScrollView.contentSize = CGSize(width: view.frame.width , height: contentView.frame.size.height)
+        }
+        
     }
 }
 //MARK: - UIImagePickerControllerDelegate
@@ -222,12 +253,12 @@ extension MoneyNoteEditViewController: UIImagePickerControllerDelegate,UINavigat
             let screenWidth = self.view.bounds.width
             //画像サイズ
             var imageWidth = image.size.width
-
+            
             //画像の横幅調整
             if imageWidth > noteTextView.frame.size.width {
                 imageWidth = screenWidth - 70
             }
-     
+            
             let image = UIImage(cgImage: image.cgImage!).aspectWidthResize(image: image, width: Double(imageWidth))
             let imageAttachment = NSTextAttachment()
             imageAttachment.image = image
@@ -262,8 +293,8 @@ extension MoneyNoteEditViewController: MoneyNoteEditAccessoryViewDelegate{
         moneyNoteEditAccessoryView.textBoldButton.isSelected = !moneyNoteEditAccessoryView.textBoldButton.isSelected
         if  moneyNoteEditAccessoryView.textBoldButton.isSelected {
             let textAttributes: [NSAttributedString.Key : Any] = [
-                      .font : UIFont.boldSystemFont(ofSize: 16)
-                  ]
+                .font : UIFont.boldSystemFont(ofSize: 16)
+            ]
             noteTextView.typingAttributes = textAttributes
             moneyNoteEditAccessoryView.textBoldButton.backgroundColor =  .rgb(red: 55, green: 161, blue: 246)
             
@@ -271,8 +302,8 @@ extension MoneyNoteEditViewController: MoneyNoteEditAccessoryViewDelegate{
             accessoryViewButtonFalse(button: moneyNoteEditAccessoryView.textColorButton)
         }else{
             let textAttributes: [NSAttributedString.Key : Any] = [
-                      .font : UIFont.systemFont(ofSize: 14)
-                  ]
+                .font : UIFont.systemFont(ofSize: 14)
+            ]
             noteTextView.typingAttributes = textAttributes
             moneyNoteEditAccessoryView.textBoldButton.backgroundColor = .clear
         }
@@ -283,18 +314,18 @@ extension MoneyNoteEditViewController: MoneyNoteEditAccessoryViewDelegate{
         moneyNoteEditAccessoryView.textLineButton.isSelected = !moneyNoteEditAccessoryView.textLineButton.isSelected
         if  moneyNoteEditAccessoryView.textLineButton.isSelected {
             let textAttributes: [NSAttributedString.Key : Any] = [
-                      .font : UIFont.systemFont(ofSize: 14),
-                      .underlineStyle: NSUnderlineStyle.single.rawValue,
-                  ]
+                .font : UIFont.systemFont(ofSize: 14),
+                .underlineStyle: NSUnderlineStyle.single.rawValue,
+            ]
             noteTextView.typingAttributes = textAttributes
             moneyNoteEditAccessoryView.textLineButton.backgroundColor =  .rgb(red: 55, green: 161, blue: 246)
-
+            
             accessoryViewButtonFalse(button: moneyNoteEditAccessoryView.textBoldButton)
             accessoryViewButtonFalse(button: moneyNoteEditAccessoryView.textColorButton)
         }else{
             let textAttributes: [NSAttributedString.Key : Any] = [
-                      .font : UIFont.systemFont(ofSize: 14)
-                  ]
+                .font : UIFont.systemFont(ofSize: 14)
+            ]
             noteTextView.typingAttributes = textAttributes
             moneyNoteEditAccessoryView.textLineButton.backgroundColor = .clear
         }
@@ -307,15 +338,15 @@ extension MoneyNoteEditViewController: MoneyNoteEditAccessoryViewDelegate{
             let colorPickerViewController = AMColorPickerViewController()
             colorPickerViewController.delegate = self
             present(colorPickerViewController, animated: true, completion: nil)
-         
+            
             moneyNoteEditAccessoryView.textColorButton.backgroundColor =  .rgb(red: 55, green: 161, blue: 246)
             accessoryViewButtonFalse(button: moneyNoteEditAccessoryView.textBoldButton)
             accessoryViewButtonFalse(button: moneyNoteEditAccessoryView.textLineButton)
         }else{
             let textAttributes: [NSAttributedString.Key : Any] = [
-                      .font : UIFont.systemFont(ofSize: 14),
-                      .foregroundColor : UIColor.rgb(red: 0, green: 0, blue: 0)
-                  ]
+                .font : UIFont.systemFont(ofSize: 14),
+                .foregroundColor : UIColor.rgb(red: 0, green: 0, blue: 0)
+            ]
             noteTextView.typingAttributes = textAttributes
             moneyNoteEditAccessoryView.textColorButton.backgroundColor = .clear
         }
@@ -326,9 +357,9 @@ extension MoneyNoteEditViewController: MoneyNoteEditAccessoryViewDelegate{
 extension MoneyNoteEditViewController: AMColorPickerDelegate{
     func colorPicker(_ colorPicker: AMColorPicker, didSelect color: UIColor) {
         let textAttributes: [NSAttributedString.Key : Any] = [
-                   .font : UIFont.systemFont(ofSize: 14),
-                  .foregroundColor : color
-              ]
+            .font : UIFont.systemFont(ofSize: 14),
+            .foregroundColor : color
+        ]
         noteTextView.typingAttributes = textAttributes
         moneyNoteEditAccessoryView.textColorButton.backgroundColor =  .rgb(red: 55, green: 161, blue: 246)
     }
