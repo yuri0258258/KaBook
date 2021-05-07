@@ -15,6 +15,7 @@ protocol MoneyTopNoteTableViewCellDelegate: AnyObject{
 class MoneyTopNoteTableViewCell: UITableViewCell {
     @IBOutlet weak var MoneyTopNoteTableViewCellContentView: UIView!
     @IBOutlet weak var moneyTopNoteTableViewCellDateLabel: UILabel!
+    @IBOutlet weak var moneyTopNoteTableViewCellMoneyLabel: UILabel!
     @IBOutlet weak var moneyTopNoteTableViewCellTextView: UITextView!
     @IBOutlet weak var moneyTopNoteTableViewCellDetailButton: UIButton!
     @IBOutlet weak var moneyTopNoteTableViewCellEditButton: UIButton!

@@ -102,6 +102,11 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uXG-TT-WXL">
+                                                <rect key="frame" x="87" y="436" width="240" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ノート内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcZ-6e-rZM">
                                                 <rect key="frame" x="20" y="145" width="102" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -119,9 +124,10 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqQ-Eu-PQj">
-                                                <rect key="frame" x="107" y="419" width="200" height="30"/>
+                                                <rect key="frame" x="107" y="419" width="200" height="40"/>
                                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="Xj1-Pl-4yL"/>
                                                     <constraint firstAttribute="width" constant="200" id="ZFB-6y-toy"/>
                                                 </constraints>
                                                 <state key="normal" title="追加する">
@@ -170,9 +176,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="chm-PT-qSA"/>
                     <connections>
+                        <outlet property="addNoteButton" destination="jqQ-Eu-PQj" id="EeN-wa-S1e"/>
+                        <outlet property="addNoteButtonTopMarginConstraint" destination="1El-7O-NC6" id="ihV-XW-A4b"/>
                         <outlet property="contentScrollView" destination="4gB-7J-l9Y" id="pX7-hO-Dsv"/>
                         <outlet property="contentView" destination="Qhs-nd-8K8" id="3I3-uR-Jlr"/>
-                        <outlet property="contentViewHeightConstraint" destination="vy9-zB-89L" id="MRS-WM-x1V"/>
                         <outlet property="moneyMinusButton" destination="QYz-fz-dyx" id="jOm-gN-HdI"/>
                         <outlet property="moneyPlusButton" destination="Szc-vl-IYk" id="smf-zS-Ps0"/>
                         <outlet property="moneyTextField" destination="9qc-wN-zri" id="sbx-yu-Flc"/>

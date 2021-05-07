@@ -21,11 +21,10 @@ class MoneyNoteEditViewController: UIViewController {
     @IBOutlet weak var moneyTextField: UITextField!
     @IBOutlet weak var noteTextView: UITextView!
     @IBOutlet weak var noteTextViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var contentViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var moneyPlusButton: UIButton!
     @IBOutlet weak var moneyMinusButton: UIButton!
-    
-    var noteDate: String?
+    @IBOutlet weak var addNoteButton: UIButton!
+    @IBOutlet weak var addNoteButtonTopMarginConstraint: NSLayoutConstraint!
     
     weak var moneyTopNoteTableViewReloadDelegate: MoneyTopNoteTableViewReloadDelegate?
     
@@ -33,10 +32,14 @@ class MoneyNoteEditViewController: UIViewController {
     
     private lazy var moneyNoteEditAccessoryView: MoneyNoteEditAccessoryView = {
         let view = MoneyNoteEditAccessoryView()
-        view.frame = .init(x: 0,y: 0,width: view.frame.width,height: 70)
+        view.frame = .init(x: 0,y: 0,width: view.frame.width,height: accessoryHeight)
         view.moneyNoteEditAccessoryViewDelegate = self
         return view
     }()
+    
+    var noteDate: String?
+    
+    private let accessoryHeight:CGFloat = 70
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +80,7 @@ class MoneyNoteEditViewController: UIViewController {
         //moneyTextField
         moneyTextField.text = "0"
         moneyTextField.delegate = self
+        
         //noteTextView
         noteTextView.delegate = self
         noteTextView.textContainerInset = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
@@ -93,25 +97,32 @@ class MoneyNoteEditViewController: UIViewController {
     
     //キーボードの出現処理
     @objc private func keyboardWillShow(notification: NSNotification){
-        print("出現")
-        
         guard let userInfo = notification.userInfo else {
             return
         }
         
         if let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue {
-            print("frameの大きさ\(keyboardFrame)")
+            if keyboardFrame.height <= accessoryHeight {
+                return
+            }
             
-            let keyboardFrameHeight = keyboardFrame.height
-            let contentInsent = UIEdgeInsets(top: 200, left: 0, bottom: keyboardFrameHeight, right: 0)
+            let contentInsentBottom = keyboardFrame.height
             
-            self.contentScrollView.contentInset = contentInsent
+            //キーボードの領域を作る
+            let contentInsent = UIEdgeInsets(top: 0, left: 0, bottom: contentInsentBottom, right: 0)
+            
+            contentScrollView.contentInset = contentInsent
+            contentScrollView.scrollIndicatorInsets = contentInsent
         }
     }
     
     //キーボードが非表示になった時の処理
     @objc private func keyboardWillHide(){
         print("隠れる")
+        let contentInsent = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        contentScrollView.contentInset = contentInsent
+        contentScrollView.scrollIndicatorInsets = contentInsent
     }
     
     @IBAction func tappedPlusButton(_ sender: Any) {
@@ -164,7 +175,6 @@ class MoneyNoteEditViewController: UIViewController {
         self.dismiss(animated: true) {
             self.moneyTopNoteTableViewReloadDelegate?.moneyTopNoteTableViewReload()
         }
-        
     }
     
     //moneyTextFieldの値のチェックと変換
@@ -200,6 +210,29 @@ class MoneyNoteEditViewController: UIViewController {
         button.isSelected = false
         button.backgroundColor =  .clear
     }
+    
+    //NoteTextViewのリサイズ処理
+    private func resizeNoteTextView(){
+        noteTextView.sizeToFit()
+        let resizedHeight = noteTextView.frame.size.height
+        let defaultNoteTextViewHeightConstant:CGFloat = 200
+        let screenSizeHeight = UIScreen.main.bounds.size.height - ((self.navigationController?.navigationBar.frame.size.height)! + self.view.safeAreaInsets.bottom + self.view.safeAreaInsets.top)
+        
+        if resizedHeight > noteTextViewHeight.constant {
+            noteTextViewHeight.constant = resizedHeight
+            noteTextView.frame.size = CGSize(width: view.frame.width - 20, height: resizedHeight)
+        }else{
+            noteTextViewHeight.constant = defaultNoteTextViewHeightConstant
+            noteTextView.frame.size = CGSize(width: view.frame.width - 20, height: resizedHeight)
+        }
+        
+        //画面のスクロールと可変画面
+        let noteTextViewAddingHeight = noteTextView.frame.size.height - defaultNoteTextViewHeightConstant
+        let contentHeight = (noteTextViewAddingHeight + screenSizeHeight) - (moneyView.frame.height + 50)
+        
+        contentView.frame.size.height = contentHeight
+        contentScrollView.contentSize = CGSize(width: view.frame.width , height: contentView.frame.size.height)
+    }
 }
 //MARK: - UITextFieldDelegate
 extension MoneyNoteEditViewController: UITextFieldDelegate{
@@ -212,28 +245,9 @@ extension MoneyNoteEditViewController: UITextFieldDelegate{
 
 //MARK: - UITextFieldDelegate
 extension MoneyNoteEditViewController: UITextViewDelegate{
+    //テキストに変更がかけられた時に呼ばれる処理
     func textViewDidChange(_ textView: UITextView) {
-        noteTextView.sizeToFit()
-        let resizedHeight = noteTextView.frame.size.height
-        let defaultNoteTextViewHeightConstant:CGFloat = 200
-        
-        if resizedHeight > noteTextViewHeight.constant {
-            noteTextViewHeight.constant = resizedHeight
-            noteTextView.frame.size = CGSize(width: view.frame.width - 20, height: resizedHeight)
-        }else{
-            noteTextViewHeight.constant = defaultNoteTextViewHeightConstant
-            noteTextView.frame.size = CGSize(width: view.frame.width - 20, height: resizedHeight)
-        }
-        
-        //画面のスクロールと可変画面
-        if 350 < noteTextView.frame.size.height {
-            let noteTextViewAddingHeight = noteTextView.frame.size.height - defaultNoteTextViewHeightConstant
-            let contentHeight = (noteTextViewAddingHeight + view.frame.height) - (moneyView.frame.height + 50)
-            
-            contentView.frame.size.height = contentHeight
-            contentScrollView.contentSize = CGSize(width: view.frame.width , height: contentView.frame.size.height)
-        }
-        
+        resizeNoteTextView()
     }
 }
 //MARK: - UIImagePickerControllerDelegate
@@ -266,6 +280,7 @@ extension MoneyNoteEditViewController: UIImagePickerControllerDelegate,UINavigat
             fullString.insert(imageString, at: textViewCursor)
             // TextViewに画像を含んだテキストをセット
             noteTextView.attributedText = fullString
+            resizeNoteTextView()
         }
         dismiss(animated: true, completion: nil)
     }

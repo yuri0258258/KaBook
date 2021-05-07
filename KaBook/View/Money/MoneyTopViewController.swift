@@ -15,7 +15,7 @@ class MoneyTopViewController: UIViewController {
     
     private var cellId = "cellId"
     
-    var moneyTopNoteTableViewHeight:CGFloat = 250
+    var moneyTopNoteTableViewHeight:CGFloat = 350
     
     private var carendarDate: String?
     
@@ -206,7 +206,7 @@ extension MoneyTopViewController: UITableViewDelegate,UITableViewDataSource{
         if cell.moneyTopNoteTableViewCellTextView.frame.size.height > moneyTopNoteTableViewCellTextViewHeight {
             moneyTopNoteTableViewHeight += cell.moneyTopNoteTableViewCellTextView.frame.size.height - moneyTopNoteTableViewCellTextViewHeight
         }else{
-            moneyTopNoteTableViewHeight = 250
+            moneyTopNoteTableViewHeight = 350
         }
         cell.moneyTopNoteTableViewCellDelegate = self
         return cell

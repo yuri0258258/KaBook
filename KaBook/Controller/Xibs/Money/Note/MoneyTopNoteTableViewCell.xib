@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellId" rowHeight="369" id="Xp7-SN-0XY" customClass="MoneyTopNoteTableViewCell" customModule="KaBook" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="897" height="369"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellId" rowHeight="351" id="Xp7-SN-0XY" customClass="MoneyTopNoteTableViewCell" customModule="KaBook" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="977" height="351"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xp7-SN-0XY" id="HOQ-iF-5Z5">
-                <rect key="frame" x="0.0" y="0.0" width="897" height="369"/>
+                <rect key="frame" x="0.0" y="0.0" width="977" height="351"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日付が入ります" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMB-Wh-L3h">
@@ -24,7 +24,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ノート内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zc7-za-yQC" customClass="PaddingLabel" customModule="KaBook" customModuleProvider="target">
-                        <rect key="frame" x="30" y="81" width="112" height="34"/>
+                        <rect key="frame" x="30" y="125" width="112" height="34"/>
                         <color key="backgroundColor" systemColor="systemTealColor"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -45,7 +45,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HCr-kH-DfA">
-                        <rect key="frame" x="30" y="135" width="837" height="100"/>
+                        <rect key="frame" x="30" y="179" width="917" height="83"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                         <color key="textColor" systemColor="labelColor"/>
@@ -53,7 +53,7 @@
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDR-xd-fiF">
-                        <rect key="frame" x="348.5" y="265" width="200" height="30"/>
+                        <rect key="frame" x="388.5" y="292" width="200" height="30"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="zF3-gb-IWE"/>
@@ -66,7 +66,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpE-9c-Kky">
-                        <rect key="frame" x="348.5" y="265" width="200" height="30"/>
+                        <rect key="frame" x="388.5" y="292" width="200" height="30"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="Zkj-HL-l7I"/>
@@ -78,17 +78,51 @@
                             <action selector="tappedEditButon:" destination="Xp7-SN-0XY" eventType="touchUpInside" id="1yo-u6-nKN"/>
                         </connections>
                     </button>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="IqQ-BS-zoy">
+                        <rect key="frame" x="30" y="81" width="131.5" height="24"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="収支金額" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TD-rR-g0w" customClass="PaddingLabel" customModule="KaBook" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="82" height="24"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingLeft">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingRight">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingTop">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingBottom">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgN-UR-XsT">
+                                <rect key="frame" x="102" y="0.0" width="29.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="IqQ-BS-zoy" firstAttribute="top" secondItem="vMB-Wh-L3h" secondAttribute="bottom" constant="20" id="8aJ-XN-2qv"/>
                     <constraint firstItem="vMB-Wh-L3h" firstAttribute="top" secondItem="HOQ-iF-5Z5" secondAttribute="top" constant="25" id="8dq-Ey-lrA"/>
                     <constraint firstItem="vDR-xd-fiF" firstAttribute="centerX" secondItem="HOQ-iF-5Z5" secondAttribute="centerX" id="Aos-WX-Asx"/>
+                    <constraint firstItem="IqQ-BS-zoy" firstAttribute="leading" secondItem="HOQ-iF-5Z5" secondAttribute="leading" constant="30" id="Cmn-0Z-5hv"/>
                     <constraint firstItem="vMB-Wh-L3h" firstAttribute="leading" secondItem="HOQ-iF-5Z5" secondAttribute="leading" constant="30" id="DiH-vJ-qLF"/>
                     <constraint firstItem="vDR-xd-fiF" firstAttribute="top" secondItem="HCr-kH-DfA" secondAttribute="bottom" constant="30" id="E7p-3l-dwg"/>
                     <constraint firstItem="HCr-kH-DfA" firstAttribute="top" secondItem="Zc7-za-yQC" secondAttribute="bottom" constant="20" id="ICc-Jy-Zgt"/>
                     <constraint firstAttribute="trailing" secondItem="HCr-kH-DfA" secondAttribute="trailing" constant="30" id="ILb-dl-Dsc"/>
                     <constraint firstItem="Zc7-za-yQC" firstAttribute="leading" secondItem="HOQ-iF-5Z5" secondAttribute="leading" constant="30" id="PBr-QV-jK3"/>
-                    <constraint firstItem="Zc7-za-yQC" firstAttribute="top" secondItem="vMB-Wh-L3h" secondAttribute="bottom" constant="20" id="RQ9-wH-AkS"/>
                     <constraint firstItem="SpE-9c-Kky" firstAttribute="centerX" secondItem="HOQ-iF-5Z5" secondAttribute="centerX" id="T7d-J5-Awk"/>
+                    <constraint firstItem="Zc7-za-yQC" firstAttribute="top" secondItem="IqQ-BS-zoy" secondAttribute="bottom" constant="20" id="mKr-hE-8wc"/>
                     <constraint firstItem="SpE-9c-Kky" firstAttribute="top" secondItem="HCr-kH-DfA" secondAttribute="bottom" constant="30" id="ona-Lo-dIU"/>
                     <constraint firstItem="HCr-kH-DfA" firstAttribute="leading" secondItem="HOQ-iF-5Z5" secondAttribute="leading" constant="30" id="y2j-ad-SOR"/>
                 </constraints>
@@ -98,9 +132,10 @@
                 <outlet property="moneyTopNoteTableViewCellDateLabel" destination="vMB-Wh-L3h" id="23v-1f-dbB"/>
                 <outlet property="moneyTopNoteTableViewCellDetailButton" destination="vDR-xd-fiF" id="Qh9-Uk-0AN"/>
                 <outlet property="moneyTopNoteTableViewCellEditButton" destination="SpE-9c-Kky" id="o1K-2y-xsu"/>
+                <outlet property="moneyTopNoteTableViewCellMoneyLabel" destination="vgN-UR-XsT" id="WZR-LZ-DUy"/>
                 <outlet property="moneyTopNoteTableViewCellTextView" destination="HCr-kH-DfA" id="GaD-bJ-pMk"/>
             </connections>
-            <point key="canvasLocation" x="158.69565217391306" y="134.93303571428569"/>
+            <point key="canvasLocation" x="111" y="178"/>
         </tableViewCell>
     </objects>
     <designables>
