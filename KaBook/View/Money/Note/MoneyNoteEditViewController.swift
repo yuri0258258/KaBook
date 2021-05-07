@@ -191,7 +191,7 @@ class MoneyNoteEditViewController: UIViewController {
                 let minusMoney = "-\(abs(money))"
                 return minusMoney
             }else{
-                let plusMoney = "+\(abs(money))"
+                let plusMoney = "\(abs(money))"
                 return plusMoney
             }
         }

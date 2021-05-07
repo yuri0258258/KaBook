@@ -21,6 +21,9 @@ class MoneyTopViewController: UIViewController {
     
     var moneyTopNoteTableViewCellDateLabelText = ""
     
+    var moneyTopNoteTableViewCellMoneyLabelText = "0"
+    
+    
     var noteData:NSAttributedString?
     
     override func viewDidLoad() {
@@ -146,6 +149,7 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         ]
         
         noteData = NSAttributedString(string: "書き込みがありません。", attributes: attributedString)
+        moneyTopNoteTableViewCellMoneyLabelText = "0"
         fetchRealmMoneyTopNoteTableView(date: date)
     }
     
@@ -159,9 +163,31 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         for data in result {
             if data.date == date {
                 noteData = data.notedata?.toAttributedString()
+                moneyTopNoteTableViewCellMoneyLabelText = data.money
             }
         }
         moneyTopNoteTableView.reloadData()
+    }
+
+    //Realmから受け取ったデータを変換してmoneyTopNoteTableViewCellMoneyLabelTextに入れる
+    private func moneyTopNoteTableViewCellMoneyLabelTextConversion(moneyLabel: UILabel,moneyLabelText: String){
+        guard let money = Int(moneyLabelText) else {
+            return
+        }
+        
+        switch money {
+        case 0:
+            moneyLabel.text = "0円"
+            moneyLabel.textColor = .black
+        case let money where money > 0:
+            moneyLabel.text = "+\(abs(money))円"
+            moneyLabel.textColor = .red
+        case let money where money < 0:
+            moneyLabel.text = "-\(abs(money))円"
+            moneyLabel.textColor = .blue
+        default:
+            moneyLabel.text = "0円"
+        }
     }
 }
 
@@ -197,6 +223,7 @@ extension MoneyTopViewController: UITableViewDelegate,UITableViewDataSource{
             cell.moneyTopNoteTableViewCellEditButton.isEnabled = false
         }
         
+        moneyTopNoteTableViewCellMoneyLabelTextConversion(moneyLabel: cell.moneyTopNoteTableViewCellMoneyLabel, moneyLabelText: moneyTopNoteTableViewCellMoneyLabelText)
         cell.moneyTopNoteTableViewCellDateLabel.text = moneyTopNoteTableViewCellDateLabelText
         cell.moneyTopNoteTableViewCellTextView.attributedText = noteData
         
