@@ -131,7 +131,91 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         return nil
     }
     
-    //カレンダー処理(ノート表示処理)
+    
+    func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
+        //cell周りのレイアウト
+        carendarView.appearance.borderRadius = 0
+        carendarView.appearance.selectionColor = .black
+        carendarView.appearance.borderSelectionColor = .blue
+        carendarView.appearance.subtitleOffset = CGPoint(x: 0, y: 5)
+        print(cell.titleLabel.frame.size)
+    }
+    
+    //カレンダー自体に収支金額を表示するプログラム
+    func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
+        let tmpDate = Calendar(identifier: .gregorian)
+        let year = tmpDate.component(.year, from: date)
+        let month = tmpDate.component(.month, from: date)
+        let day = tmpDate.component(.day, from: date)
+        let m = String(format: "%02d", month)
+        let d = String(format: "%02d", day)
+        let date = "\(year)/\(m)/\(d)"
+        //Realmからの取得
+        let realm = try! Realm()
+        var result = realm.objects(CalendarRealm.self)
+        var money = ""
+        //日付のデータをRealmから探して、取得
+        result = result.filter("date = '\(date)'")
+        for data in result {
+            if data.date == date {
+                money = data.money
+            }
+        }
+        //数値型に変換して以下で処理
+        guard let moneyInt = Int(money) else {
+            return ""
+        }
+        
+        switch moneyInt {
+        case 0:
+            return "0円"
+        case let money where money > 0:
+            return "+\(abs(moneyInt))円"
+        case let money where money < 0:
+            return "-\(abs(moneyInt))円"
+        default:
+            return "0円"
+        }
+    }
+    
+    //カレンダーに表示されている収支金額の色を変える処理
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, subtitleDefaultColorFor date: Date) -> UIColor? {
+        let tmpDate = Calendar(identifier: .gregorian)
+        let year = tmpDate.component(.year, from: date)
+        let month = tmpDate.component(.month, from: date)
+        let day = tmpDate.component(.day, from: date)
+        let m = String(format: "%02d", month)
+        let d = String(format: "%02d", day)
+        let date = "\(year)/\(m)/\(d)"
+        //Realmからの取得
+        let realm = try! Realm()
+        var result = realm.objects(CalendarRealm.self)
+        var money = ""
+        //日付のデータをRealmから探して、取得
+        result = result.filter("date = '\(date)'")
+        for data in result {
+            if data.date == date {
+                money = data.money
+            }
+        }
+        //数値型に変換して以下で処理
+        guard let moneyInt = Int(money) else {
+         return UIColor.lightGray
+        }
+        
+        switch moneyInt {
+        case 0:
+            return UIColor.lightGray
+        case let money where money > 0:
+            return UIColor.red
+        case let money where money < 0:
+            return UIColor.blue
+        default:
+            return UIColor.lightGray
+        }
+    }
+    
+    //タップされた時のカレンダー処理(ノート表示処理)
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let tmpDate = Calendar(identifier: .gregorian)
         let year = tmpDate.component(.year, from: date)
@@ -141,9 +225,9 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         let d = String(format: "%02d", day)
         let date = "\(year)/\(m)/\(d)"
         carendarDate = "\(year)/\(m)/\(d)"
-        //クリックしたら、日付が表示される。
-        moneyTopNoteTableViewCellDateLabelText = "\(m)/\(d)"
-        //クリックされた日付にノートがない場合のノート内容
+        //タップしたら、日付が表示される。
+        moneyTopNoteTableViewCellDateLabelText = date
+        //タップされた日付にノートがない場合のノート内容
         let attributedString: [NSAttributedString.Key : Any] = [
             .font : UIFont.systemFont(ofSize: 14)
         ]
@@ -269,3 +353,4 @@ extension MoneyTopViewController: MoneyTopNoteTableViewReloadDelegate{
             HUD.hide()
         }
     }}
+
