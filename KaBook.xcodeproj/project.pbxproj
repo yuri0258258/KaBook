@@ -12,6 +12,7 @@
 		471993E3260A4945000CDE57 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471993E2260A4945000CDE57 /* SignUpViewController.swift */; };
 		4731867C2624699B006C2AC5 /* MoneyNoteEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4731867B2624699B006C2AC5 /* MoneyNoteEdit.storyboard */; };
 		47318681262469E6006C2AC5 /* MoneyNoteEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47318680262469E6006C2AC5 /* MoneyNoteEditViewController.swift */; };
+		4736790F26529B9C00DFE1B4 /* DateExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4736790E26529B9C00DFE1B4 /* DateExtentions.swift */; };
 		476DF075261F370000E6B236 /* MoneyTopNoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476DF074261F370000E6B236 /* MoneyTopNoteTableViewCell.xib */; };
 		476FD6D42614B9EB00DCAA21 /* NavigationExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476FD6D32614B9EB00DCAA21 /* NavigationExtentions.swift */; };
 		477A76CE26120A7400674F6B /* UIImageExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477A76CD26120A7400674F6B /* UIImageExtention.swift */; };
@@ -73,6 +74,7 @@
 		471993E2260A4945000CDE57 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4731867B2624699B006C2AC5 /* MoneyNoteEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoneyNoteEdit.storyboard; sourceTree = "<group>"; };
 		47318680262469E6006C2AC5 /* MoneyNoteEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyNoteEditViewController.swift; sourceTree = "<group>"; };
+		4736790E26529B9C00DFE1B4 /* DateExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtentions.swift; sourceTree = "<group>"; };
 		476DF074261F370000E6B236 /* MoneyTopNoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoneyTopNoteTableViewCell.xib; sourceTree = "<group>"; };
 		476FD6D32614B9EB00DCAA21 /* NavigationExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationExtentions.swift; sourceTree = "<group>"; };
 		477A76CD26120A7400674F6B /* UIImageExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtention.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				4783C83D2639BD730086E446 /* StringExtention.swift */,
 				4783C83F2639BD9A0086E446 /* NSDataExtention.swift */,
 				4783C8412639BDE50086E446 /* NSAttributedStringExtention.swift */,
+				4736790E26529B9C00DFE1B4 /* DateExtentions.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -731,6 +734,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4736790F26529B9C00DFE1B4 /* DateExtentions.swift in Sources */,
 				477A76CE26120A7400674F6B /* UIImageExtention.swift in Sources */,
 				47EA7D83261C64D8007536AC /* MoneyTopViewController.swift in Sources */,
 				47B7F0702610EDC600544B41 /* BaseTabBarViewController.swift in Sources */,

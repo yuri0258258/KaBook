@@ -52,12 +52,21 @@ class MoneyTopViewController: UIViewController {
     private func carendarViewSetUp(){
         carendarView.dataSource = self
         carendarView.delegate = self
+        carendarView.register(FSCalendarCell.self, forCellReuseIdentifier: cellId)
         carendarView.today = nil
         carendarView.backgroundColor = .white
         carendarView.headerHeight = 80
         carendarView.weekdayHeight = 50
         carendarView.calendarWeekdayView.backgroundColor = UIColor.rgb(red: 55, green: 161, blue: 246)
-        
+     
+        carendarView.appearance.borderRadius = 0
+        carendarView.appearance.borderSelectionColor = .lightGray
+        carendarView.appearance.selectionColor = .lightGray
+        carendarView.appearance.titleSelectionColor  = .white
+        carendarView.appearance.subtitleSelectionColor  = carendarView.appearance.subtitleTodayColor
+        carendarView.appearance.subtitleOffset = CGPoint(x: 0, y: 5)
+        carendarView.adjustsBoundingRectWhenChangingMonths = true
+
         // ヘッダを変更する
         carendarView.appearance.headerDateFormat = "YYYY年MM月"
         carendarView.calendarWeekdayView.weekdayLabels[0].text = "日"
@@ -131,16 +140,6 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         return nil
     }
     
-    
-    func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
-        //cell周りのレイアウト
-        carendarView.appearance.borderRadius = 0
-        carendarView.appearance.selectionColor = .black
-        carendarView.appearance.borderSelectionColor = .blue
-        carendarView.appearance.subtitleOffset = CGPoint(x: 0, y: 5)
-        print(cell.titleLabel.frame.size)
-    }
-    
     //カレンダー自体に収支金額を表示するプログラム
     func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
         let tmpDate = Calendar(identifier: .gregorian)
@@ -178,6 +177,7 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         }
     }
     
+    
     //カレンダーに表示されている収支金額の色を変える処理
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, subtitleDefaultColorFor date: Date) -> UIColor? {
         let tmpDate = Calendar(identifier: .gregorian)
@@ -200,7 +200,7 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         }
         //数値型に変換して以下で処理
         guard let moneyInt = Int(money) else {
-         return UIColor.lightGray
+            return UIColor.lightGray
         }
         
         switch moneyInt {
@@ -252,7 +252,7 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         }
         moneyTopNoteTableView.reloadData()
     }
-
+    
     //Realmから受け取ったデータを変換してmoneyTopNoteTableViewCellMoneyLabelTextに入れる
     private func moneyTopNoteTableViewCellMoneyLabelTextConversion(moneyLabel: UILabel,moneyLabelText: String){
         guard let money = Int(moneyLabelText) else {
@@ -273,6 +273,28 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             moneyLabel.text = "0円"
         }
     }
+    
+    //carendarCell
+    func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
+          let cell = calendar.dequeueReusableCell(withIdentifier: cellId, for: date, at: position)
+//        print(cell.subtitleLabel)
+          return cell
+      }
+      
+//      func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at position: FSCalendarMonthPosition) {
+//        print(cell.subtitleLabel)
+//      }
+      
+//      func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
+//          if self.gregorian.isDateInToday(date) {
+//              return "今"
+//          }
+//          return nil
+//      }
+      
+//      func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+//          return 2
+//      }
 }
 
 //MARK: - UITableViewDelegate

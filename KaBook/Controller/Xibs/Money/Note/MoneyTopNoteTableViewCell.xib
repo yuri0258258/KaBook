@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日付が入ります" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMB-Wh-L3h" customClass="PaddingLabel" customModule="KaBook" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="25" width="977" height="27.5"/>
+                        <rect key="frame" x="0.0" y="25" width="977" height="47.5"/>
                         <color key="backgroundColor" systemColor="systemTealColor"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -32,7 +32,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ノート内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zc7-za-yQC" customClass="PaddingLabel" customModule="KaBook" customModuleProvider="target">
-                        <rect key="frame" x="30" y="126.5" width="112" height="34"/>
+                        <rect key="frame" x="30" y="146.5" width="112" height="34"/>
                         <color key="backgroundColor" systemColor="systemTealColor"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -53,7 +53,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HCr-kH-DfA">
-                        <rect key="frame" x="30" y="180.5" width="917" height="83"/>
+                        <rect key="frame" x="30" y="200.5" width="917" height="83"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                         <color key="textColor" systemColor="labelColor"/>
@@ -61,7 +61,7 @@
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDR-xd-fiF">
-                        <rect key="frame" x="388.5" y="293.5" width="200" height="30"/>
+                        <rect key="frame" x="388.5" y="313.5" width="200" height="30"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="zF3-gb-IWE"/>
@@ -74,7 +74,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpE-9c-Kky">
-                        <rect key="frame" x="388.5" y="293.5" width="200" height="30"/>
+                        <rect key="frame" x="388.5" y="313.5" width="200" height="30"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="Zkj-HL-l7I"/>
@@ -87,7 +87,7 @@
                         </connections>
                     </button>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="IqQ-BS-zoy">
-                        <rect key="frame" x="30" y="72.5" width="141.5" height="34"/>
+                        <rect key="frame" x="30" y="92.5" width="141.5" height="34"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="収支金額" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TD-rR-g0w" customClass="PaddingLabel" customModule="KaBook" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="92" height="34"/>
@@ -153,6 +153,9 @@
         </designable>
         <designable name="Zc7-za-yQC">
             <size key="intrinsicContentSize" width="112" height="34"/>
+        </designable>
+        <designable name="vMB-Wh-L3h">
+            <size key="intrinsicContentSize" width="163.5" height="47.5"/>
         </designable>
     </designables>
     <resources>

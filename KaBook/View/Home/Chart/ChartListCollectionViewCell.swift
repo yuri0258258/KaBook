@@ -25,8 +25,6 @@ class ChartListCollectionViewCell: UICollectionViewCell {
     }
     
     private func setUpViews(){
-//        mainView.backgroundColor = UIColor.rgb(red: 245, green: 245, blue: 245)
-        
         // y軸のプロットデータ(検証用)
         let rawData: [Int] = [100000,110000,90000,60000,100000,100000,100000,120000,140000,180000,150000,200000]
         initDisplay(data: rawData)
