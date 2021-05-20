@@ -102,19 +102,14 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uXG-TT-WXL">
-                                                <rect key="frame" x="87" y="436" width="240" height="128"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ノート内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcZ-6e-rZM">
-                                                <rect key="frame" x="20" y="145" width="102" height="24"/>
+                                                <rect key="frame" x="20" y="280" width="102" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vsK-YA-yC8">
-                                                <rect key="frame" x="20" y="189" width="374" height="200"/>
+                                                <rect key="frame" x="20" y="324" width="374" height="200"/>
                                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="T6q-02-PkP"/>
@@ -124,7 +119,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqQ-Eu-PQj">
-                                                <rect key="frame" x="107" y="419" width="200" height="40"/>
+                                                <rect key="frame" x="107" y="554" width="200" height="40"/>
                                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Xj1-Pl-4yL"/>
@@ -137,6 +132,48 @@
                                                     <action selector="tappedNoteAddButton:" destination="aTg-9U-le9" eventType="touchUpInside" id="kGf-78-P5R"/>
                                                 </connections>
                                             </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rl7-Sa-BBc">
+                                                <rect key="frame" x="20" y="150" width="374" height="100"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8z3-tI-0CE">
+                                                        <rect key="frame" x="10" y="49" width="354" height="26.5"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FNs-XK-Nbo">
+                                                                <rect key="frame" x="0.0" y="0.0" width="354" height="26.5"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="総資産額" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWA-x5-RLT">
+                                                        <rect key="frame" x="10" y="10" width="82" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="0QX-Bn-frR"/>
+                                                    <constraint firstItem="8z3-tI-0CE" firstAttribute="leading" secondItem="rl7-Sa-BBc" secondAttribute="leading" constant="10" id="2Vu-5G-FDQ"/>
+                                                    <constraint firstItem="mWA-x5-RLT" firstAttribute="top" secondItem="rl7-Sa-BBc" secondAttribute="top" constant="10" id="Px0-AN-7Vv"/>
+                                                    <constraint firstItem="mWA-x5-RLT" firstAttribute="leading" secondItem="rl7-Sa-BBc" secondAttribute="leading" constant="10" id="q12-X7-h9g"/>
+                                                    <constraint firstItem="8z3-tI-0CE" firstAttribute="top" secondItem="mWA-x5-RLT" secondAttribute="bottom" constant="15" id="trm-ME-qtZ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="8z3-tI-0CE" secondAttribute="trailing" constant="10" id="wdc-9M-Bs6"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" systemColor="labelColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -144,10 +181,13 @@
                                             <constraint firstItem="vsK-YA-yC8" firstAttribute="leading" secondItem="Qhs-nd-8K8" secondAttribute="leading" constant="20" id="1ph-WZ-Grw"/>
                                             <constraint firstAttribute="trailing" secondItem="Emv-af-j4P" secondAttribute="trailing" constant="20" id="9fS-Dq-i2b"/>
                                             <constraint firstItem="jqQ-Eu-PQj" firstAttribute="centerX" secondItem="Qhs-nd-8K8" secondAttribute="centerX" id="Ago-G0-QBP"/>
+                                            <constraint firstAttribute="trailing" secondItem="rl7-Sa-BBc" secondAttribute="trailing" constant="20" id="Baw-ch-54x"/>
                                             <constraint firstAttribute="trailing" secondItem="vsK-YA-yC8" secondAttribute="trailing" constant="20" id="E27-uv-eyO"/>
                                             <constraint firstItem="Emv-af-j4P" firstAttribute="top" secondItem="Qhs-nd-8K8" secondAttribute="top" constant="20" id="EbE-Oo-xtD"/>
+                                            <constraint firstItem="rl7-Sa-BBc" firstAttribute="leading" secondItem="Qhs-nd-8K8" secondAttribute="leading" constant="20" id="NI1-9O-3q1"/>
                                             <constraint firstItem="kcZ-6e-rZM" firstAttribute="leading" secondItem="Qhs-nd-8K8" secondAttribute="leading" constant="20" id="T9D-GK-2Qb"/>
-                                            <constraint firstItem="kcZ-6e-rZM" firstAttribute="top" secondItem="Emv-af-j4P" secondAttribute="bottom" constant="25" id="XTC-mm-21g"/>
+                                            <constraint firstItem="kcZ-6e-rZM" firstAttribute="top" secondItem="rl7-Sa-BBc" secondAttribute="bottom" constant="30" id="f8o-rq-yQm"/>
+                                            <constraint firstItem="rl7-Sa-BBc" firstAttribute="top" secondItem="Emv-af-j4P" secondAttribute="bottom" constant="30" id="moc-II-6R4"/>
                                             <constraint firstAttribute="height" constant="1000" id="vy9-zB-89L"/>
                                             <constraint firstItem="vsK-YA-yC8" firstAttribute="top" secondItem="kcZ-6e-rZM" secondAttribute="bottom" constant="20" id="wNb-rS-xzO"/>
                                             <constraint firstItem="Emv-af-j4P" firstAttribute="leading" secondItem="Qhs-nd-8K8" secondAttribute="leading" constant="20" id="xWn-97-78q"/>
@@ -186,6 +226,8 @@
                         <outlet property="moneyView" destination="Emv-af-j4P" id="lKc-9L-zF4"/>
                         <outlet property="noteTextView" destination="vsK-YA-yC8" id="4R2-5e-IaY"/>
                         <outlet property="noteTextViewHeight" destination="T6q-02-PkP" id="POc-yn-vwy"/>
+                        <outlet property="totalMoneyTextField" destination="FNs-XK-Nbo" id="ATL-la-Xnn"/>
+                        <outlet property="totalMoneyView" destination="rl7-Sa-BBc" id="YYM-ee-7qr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3y-do-u2e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

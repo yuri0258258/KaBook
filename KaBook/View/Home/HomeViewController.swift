@@ -72,7 +72,7 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
             // 求めたい月の最後の日のDateオブジェクトを得る
             let date = calendar.date(from: components)!
             let dayCount = calendar.component(.day, from: date)
-    
+            
             //今月が一桁の場合の処理(Realmデータと合わせる)
             var thisMonthString = "\(thisMonth)"
             if thisMonth < 10 {
@@ -83,7 +83,7 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
                 //Realmからの取得
                 let realm = try! Realm()
                 var result = realm.objects(CalendarRealm.self)
-                
+  
                 //日が一桁の場合の処理(Realmデータと合わせる)
                 if day + 1 < 10 {
                     //日付のデータをRealmから探して、取得
@@ -106,7 +106,8 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
                     }
                 }
             }
-            
+            let rawData: [Int] = [100000,100000,100000,100000]
+            cell.initDisplay(data: rawData)
         }
         return cell
     }

@@ -30,7 +30,7 @@ class ChartListCollectionViewCell: UICollectionViewCell {
         initDisplay(data: rawData)
     }
     
-      private func initDisplay(data: [Int]) {
+       func initDisplay(data: [Int]) {
         let dataEntries = data.enumerated().map { BarChartDataEntry(x: Double($0.offset + 1), y: Double($0.element)) }
            
            lineDataSet = LineChartDataSet(entries: dataEntries, label: "")

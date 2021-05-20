@@ -19,6 +19,8 @@ class MoneyNoteEditViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var moneyView: UIView!
     @IBOutlet weak var moneyTextField: UITextField!
+    @IBOutlet weak var totalMoneyView: UIView!
+    @IBOutlet weak var totalMoneyTextField: UITextField!
     @IBOutlet weak var noteTextView: UITextView!
     @IBOutlet weak var noteTextViewHeight: NSLayoutConstraint!
     @IBOutlet weak var moneyPlusButton: UIButton!
@@ -81,6 +83,10 @@ class MoneyNoteEditViewController: UIViewController {
         moneyTextField.text = "0"
         moneyTextField.delegate = self
         
+        //totalMoneyTextField
+        totalMoneyTextField.text = "0"
+        totalMoneyTextField.delegate = self
+        
         //noteTextView
         noteTextView.delegate = self
         noteTextView.textContainerInset = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
@@ -106,21 +112,32 @@ class MoneyNoteEditViewController: UIViewController {
                 return
             }
             
-            let contentInsentBottom = keyboardFrame.height
-            
-            //キーボードの領域を作る
-            let contentInsent = UIEdgeInsets(top: 0, left: 0, bottom: contentInsentBottom, right: 0)
-            
-            contentScrollView.contentInset = contentInsent
-            contentScrollView.scrollIndicatorInsets = contentInsent
+            //noteTextViewの時のみ起動
+            if keyboardFrame.height > 400 {
+                let contentInsentBottom = keyboardFrame.height
+                //キーボードの領域を作る
+                let contentInsent = UIEdgeInsets(top: 0, left: 0, bottom: contentInsentBottom, right: 0)
+                
+                //contentScrollViewの位置を上げる
+                if contentScrollView.frame.origin.y == 0 {
+                    contentScrollView.frame.origin.y -= moneyView.frame.size.height + totalMoneyView.frame.size.height
+                } else {
+                    let suggestionHeight = contentScrollView.frame.origin.y + keyboardFrame.height
+                    contentScrollView.frame.origin.y -= suggestionHeight
+                }
+                
+                contentScrollView.contentInset = contentInsent
+                contentScrollView.scrollIndicatorInsets = contentInsent
+            }
         }
     }
     
     //キーボードが非表示になった時の処理
     @objc private func keyboardWillHide(){
-        print("隠れる")
         let contentInsent = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
+        if contentScrollView.frame.origin.y != 0 {
+            contentScrollView.frame.origin.y = 0
+        }
         contentScrollView.contentInset = contentInsent
         contentScrollView.scrollIndicatorInsets = contentInsent
     }
@@ -151,6 +168,14 @@ class MoneyNoteEditViewController: UIViewController {
             return
         }
         
+        //totalMoneyTextFieldの値が数字かどうか
+        guard let _ = Int(totalMoneyTextField.text!) else {
+            errorAlert(error: .totalMoneyTextNotIntError)
+            return
+        }
+    
+        let totalMoney:String = totalMoneyTextField.text!
+        
         guard  let noteData = noteTextView.attributedText.toNSData() else {
             return
         }
@@ -165,7 +190,7 @@ class MoneyNoteEditViewController: UIViewController {
         let realm = try! Realm()
         try! realm.write {
             //日付表示の内容とスケジュール入力の内容が書き込まれる。
-            let calendarRealm = [CalendarRealm(value: ["date": noteDate,"money": money,"notedata":noteData])]
+            let calendarRealm = [CalendarRealm(value: ["date": noteDate,"money": money,"totalMoney": totalMoney,"noteData":noteData])]
             realm.add(calendarRealm)
             print("データ書き込み中")
         }
@@ -217,7 +242,7 @@ class MoneyNoteEditViewController: UIViewController {
         let resizedHeight = noteTextView.frame.size.height
         let defaultNoteTextViewHeightConstant:CGFloat = 200
         let screenSizeHeight = UIScreen.main.bounds.size.height - ((self.navigationController?.navigationBar.frame.size.height)! + self.view.safeAreaInsets.bottom + self.view.safeAreaInsets.top)
-        
+    
         if resizedHeight > noteTextViewHeight.constant {
             noteTextViewHeight.constant = resizedHeight
             noteTextView.frame.size = CGSize(width: view.frame.width - 20, height: resizedHeight)

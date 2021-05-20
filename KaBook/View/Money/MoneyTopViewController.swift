@@ -246,7 +246,7 @@ extension MoneyTopViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         result = result.filter("date = '\(date)'")
         for data in result {
             if data.date == date {
-                noteData = data.notedata?.toAttributedString()
+                noteData = data.noteData?.toAttributedString()
                 moneyTopNoteTableViewCellMoneyLabelText = data.money
             }
         }

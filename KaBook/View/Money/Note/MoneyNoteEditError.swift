@@ -10,6 +10,7 @@ import UIKit
 enum MoneyNoteEditError:Error {
     case noteTextNoneError
     case moneyTextNotIntError
+    case totalMoneyTextNotIntError
 }
 
 extension MoneyNoteEditError:LocalizedError{
@@ -19,6 +20,8 @@ extension MoneyNoteEditError:LocalizedError{
             return "ノート内容に記述がありません。"
         case .moneyTextNotIntError:
             return "収支金額には数字を入力してください。"
+        case .totalMoneyTextNotIntError:
+            return "総資産額には数字を入力してください。"
         }
     }
 }
