@@ -49,7 +49,7 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
         //月の取得
         let date = Date()
         //総資産(仮)
-        var totalMoney = 10000000
+        var totalMoney:[Int] = []
         if indexPath.row == 0 {
             //年間収支
             let year = date.get(.year)
@@ -59,8 +59,8 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
             //月間収支
             let thisMonth = date.get(.month)
             cell.chartTermLabel.text = "月間収支（\(thisMonth)月）"
-            cell.chartView.leftAxis.axisMaximum = 300000
-            
+            // x軸のラベル数をデータの数に設定
+            cell.chartView.xAxis.labelCount = 15
             //今月の日数を取得
             let calendar = Calendar(identifier: .gregorian)
             var components = DateComponents()
@@ -89,9 +89,8 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
                     //日付のデータをRealmから探して、取得
                     result = result.filter("date = '\(date.get(.year))/\(thisMonthString)/0\(day + 1)'")
                     for data in result {
-                        if  let money = Int(data.money)  {
-                            totalMoney += money
-                            print(totalMoney)
+                        if let money = Int(data.totalMoney)  {
+                            totalMoney.append(money)
                         }
                     }
                 }else{
@@ -99,15 +98,19 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
                     //日付のデータをRealmから探して、取得
                     result = result.filter("date = '\(date.get(.year))/\(thisMonthString)/\(day + 1)'")
                     for data in result {
-                        if  let money = Int(data.money)  {
-                            totalMoney += money
-                            print(totalMoney)
+                        if  let money = Int(data.totalMoney)  {
+                            totalMoney.append(money)
                         }
                     }
                 }
             }
-            let rawData: [Int] = [100000,100000,100000,100000]
-            cell.initDisplay(data: rawData)
+            //y軸のmax値の計算
+            if let maxMoney = totalMoney.max() {
+                cell.chartView.leftAxis.axisMaximum = Double(maxMoney) + Double(maxMoney / 10)
+                print(maxMoney)
+            }
+            print(totalMoney)
+            cell.initDisplay(data: totalMoney)
         }
         return cell
     }

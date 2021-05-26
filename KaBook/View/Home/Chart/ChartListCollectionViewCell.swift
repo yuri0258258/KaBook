@@ -39,16 +39,14 @@ class ChartListCollectionViewCell: UICollectionViewCell {
            // x軸のラベルをボトムに表示
            chartView.xAxis.labelPosition = .bottom
            // x軸のラベル数をデータの数に設定
-           chartView.xAxis.labelCount = dataEntries.count - 1
+           chartView.xAxis.labelCount = 15
            // タップでプロットを選択できないようにする
            chartView.highlightPerTapEnabled = false
-           chartView.leftAxis.axisMaximum = 250000 //y左軸最大値
            chartView.leftAxis.axisMinimum = 0 //y左軸最小値
            chartView.leftAxis.labelCount = 11 //y軸ラベルの表示数
            chartView.leftAxis.drawTopYLabelEntryEnabled = true // y軸の最大値のみ表示
            chartView.leftAxis.forceLabelsEnabled = true //最小最大値ラベルを必ず表示?
            chartView.rightAxis.enabled = false // Y軸右軸(値)を非表示
-//        chartView.leftAxis.description = "（月）"
            chartView.extraTopOffset = 25 // 上から20pxオフセット
            chartView.legend.enabled = false // 左下のラベル非表示
            chartView.pinchZoomEnabled = true // ピンチズームオフ
